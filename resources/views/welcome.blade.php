@@ -78,7 +78,7 @@
             @elseif(Auth()->user()->hasRole('student'))
             <a href="{{ route('dashboard.users') }}">Home</a>
             @elseif(Auth()->user()->hasRole('admin'))
-            <a href="{{ route('dashboard.admin') }}">Home</a>
+            <a href="{{ route('dashboard.users') }}">Home</a>
             @else
             @endif
             @else

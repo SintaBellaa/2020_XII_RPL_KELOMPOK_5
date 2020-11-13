@@ -17,7 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/logout', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
@@ -30,6 +32,18 @@ Route::post('/account/forgot-password', 'Auth\AccountController@sendEmailForgotP
 Route::get('/account/{resetVerificationToken}/forgot-password', 'Auth\AccountController@verifyForgotToken');
 Route::post('/account/reset-password', 'Auth\AccountController@updatePassword')->name('password-reset');
 
+
+Route::get('/admin-dashboard','AdminController@index');
+Route::get('/admin-list','AdminController@list');
+Route::get('/admin-add','AdminController@add');
+
+
+Route::get('/student','StudentController@index');
+Route::get('/student/list-student','StudentController@list');
+
+
+
+
 //Route untuk register teacher dan staff
 
 Route::get('/register-student', 'Auth\RegisterController@registerStudent');
@@ -38,8 +52,11 @@ Route::get('/register-staff', 'Auth\RegisterController@registerStaff');
 
 //Route Untuk Admin, Student, Teacher, Staff TU, jika register dan login maka akan ke halaman ini 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/dashboard', 'User\UserController@index')->name('dashboard.users');
+   Route::get('/dashboard', 'User\UserController@index')->name('dashboard.users');
+	//Route::get('/dash', 'User\UserController@index')->name('admin.coba');
 });
+
+
 Route::get('/home', function () {
     return view('layouts.master');
 });
