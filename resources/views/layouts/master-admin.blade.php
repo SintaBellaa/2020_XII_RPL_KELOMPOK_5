@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 
-	@include('layouts.admin.head')
+	@include('layouts.head')
 <body>
-	@include('layouts.admin.sidebar')
+	@include('layouts.sidebar')
 
-	@include('layouts.admin.header')
+	@include('layouts.header')
 
 	<div class="clearfix"></div>
  	<div class="content-wrapper">
@@ -29,29 +29,7 @@
     <!--end footer-->
 
    </div>
-
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-	
-  <!-- simplebar js -->
-  <script src="assets/plugins/simplebar/js/simplebar.js"></script>
-  <!-- waves effect js -->
-  <script src="assets/js/waves.js"></script>
-  <!-- sidebar-menu js -->
-  <script src="assets/js/sidebar-menu.js"></script>
-  <!-- Custom scripts -->
-  <script src="assets/js/app-script.js"></script>
-  
-  <!-- Vector map JavaScript -->
-  <script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-  <script src="assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-  <!-- Chart js -->
-  <script src="assets/plugins/Chart.js/Chart.min.js"></script>
-  <!-- Index js -->
-  <script src="assets/js/index.js"></script>
-  @include('layouts.admin.script')
+  @include('sweetalert::alert')
+  @include('layouts.js')
 </body>
 </html>

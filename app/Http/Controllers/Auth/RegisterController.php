@@ -89,8 +89,10 @@ class RegisterController extends Controller
             'usr_password' => Hash::make($data['password']),
             'usr_verification_token' => str_replace('/', '', Hash::make(Str::random(12))),
             'usr_is_active' => true,
+
         ]);
 
+        
         if ($data['role'] == 1) {
             $user->assignRole('student');
             $user->created_by = $user->usr_id;
@@ -103,7 +105,7 @@ class RegisterController extends Controller
         }
 
 
-        Mail::to($data['usr_email'])->send(new SendMail($user));
+        //Mail::to($data['usr_email'])->send(new SendMail($user));
         return $user;
     }
 }

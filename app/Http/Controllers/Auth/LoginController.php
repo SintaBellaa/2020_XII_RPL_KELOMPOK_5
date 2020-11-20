@@ -41,12 +41,12 @@ class LoginController extends Controller
 
     public function authenticated(Request $request, $user)
     {
-        /*if ($user->hasRole('admin')) {
-            //return Adminn
+        if ($user->hasRole('admin')) {
+            return redirect ('admin/dashboard')->withSuccess('Anda Login Sebagai Admin');
         }elseif($user->hasRole('student')){
-            //untuk user
-        }*/
-        return redirect()->route('dashboard.users');
+            return  redirect ('student/dash-student')->withSuccess('Anda Login Sebagai Student');
+        }
+        return redirect()->route('dashboard/users');
     }
 
     public function username()

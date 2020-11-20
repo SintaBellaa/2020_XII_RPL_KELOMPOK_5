@@ -14,12 +14,17 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/logout', function () {
     return view('welcome');
 });
+
+Route::get('/qwerty' , function (){
+	return view('layouts.master-student');
+});
+
 
 Auth::routes();
 
@@ -32,15 +37,43 @@ Route::post('/account/forgot-password', 'Auth\AccountController@sendEmailForgotP
 Route::get('/account/{resetVerificationToken}/forgot-password', 'Auth\AccountController@verifyForgotToken');
 Route::post('/account/reset-password', 'Auth\AccountController@updatePassword')->name('password-reset');
 
+// ini untuk admin
+Route::group(['middleware' => ['role:admin']], function () {
 
-Route::get('/admin-dashboard','AdminController@index');
-Route::get('/admin-list','AdminController@list');
-Route::get('/admin-add','AdminController@add');
+		Route::get('admin/dashboard','AdminController@index');
+		
+		//ini untuk fitur pelanggaran
+		Route::get('admin/list-offense','AdminController@ListOffense');
+		Route::get('admin/add-offense','AdminController@AddOffense');
+		Route::post('admin/add-offense','AdminController@saveAddOffense');
+		Route::post('admin/list-offense' , 'AdminController@EditListOffense');
+		
+		
+		//ini untuk fitur kategori
+		Route::get('admin/list-category' , 'AdminController@ListCategory');
+		Route::post('admin/list-category' , 'AdminController@EditListCategory');
+		
+		Route::get('admin/add-category','AdminController@AddCategory');
+		Route::post('admin/add-category','AdminController@SaveAddCategory');
+		
+		Route::get('/admin/list-category/delete' , 'AdminController@DeleteCategory');
+		
+		//ini untuk fitur kelola siswa
+		Route::get('admin/list-student','AdminController@ListStudent');
+		Route::get('admin/add-student','AdminController@AddStudent');
+		Route::post('admin/add-student','AdminController@SaveAddStudent');
+
+		Route::post('admin/list-student','AdminController@EditStudent');
+		Route::get('/admin/student/delete' , 'AdminController@DeleteStudent');
+		
+	});
 
 
-Route::get('/student','StudentController@index');
-Route::get('/student/list-student','StudentController@list');
-
+// ini untuk student
+Route::group(['middleware' => ['role:student']], function () {
+		Route::get('/student','StudentController@index');
+		Route::get('/student/list-student','StudentController@list');
+	});
 
 
 
@@ -50,11 +83,7 @@ Route::get('/register-student', 'Auth\RegisterController@registerStudent');
 Route::get('/register-teacher', 'Auth\RegisterController@registerTeacher');
 Route::get('/register-staff', 'Auth\RegisterController@registerStaff');
 
-//Route Untuk Admin, Student, Teacher, Staff TU, jika register dan login maka akan ke halaman ini 
-Route::group(['middleware' => ['auth', 'verified']], function () {
-   Route::get('/dashboard', 'User\UserController@index')->name('dashboard.users');
-	//Route::get('/dash', 'User\UserController@index')->name('admin.coba');
-});
+
 
 
 Route::get('/home', function () {

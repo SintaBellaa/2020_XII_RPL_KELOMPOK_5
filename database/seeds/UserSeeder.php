@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
         $admin = User::create([
             'usr_name' => 'Admin',
-            'usr_email' => 'admin@example.com',
+            'usr_email' => 'admin@gmail.com',
             'usr_phone' => '08213456789',
             'usr_password' => Hash::make('admin123'),
             'usr_email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
 
         $siswa = User::create([
             'usr_name' => 'Student',
-            'usr_email' => 'student@example.com',
+            'usr_email' => 'student@gmail.com',
             'usr_phone' => '08213456789',
             'usr_password' => Hash::make('student123'),
             'usr_email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
