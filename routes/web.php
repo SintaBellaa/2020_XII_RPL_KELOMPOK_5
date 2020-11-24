@@ -68,10 +68,9 @@ Route::group(['middleware' => ['role:admin']], function () {
 		
 	});
 
-
 // ini untuk student
 Route::group(['middleware' => ['role:student']], function () {
-		Route::get('/student','StudentController@index');
+		Route::get('/student/dashboard','StudentController@index');
 		Route::get('/student/list-student','StudentController@list');
 	});
 
@@ -82,8 +81,6 @@ Route::group(['middleware' => ['role:student']], function () {
 Route::get('/register-student', 'Auth\RegisterController@registerStudent');
 Route::get('/register-teacher', 'Auth\RegisterController@registerTeacher');
 Route::get('/register-staff', 'Auth\RegisterController@registerStaff');
-
-
 
 
 Route::get('/home', function () {

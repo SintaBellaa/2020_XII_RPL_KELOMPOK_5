@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header"><i class="fa fa-table"></i>List Kategori</div>
         <div class="container" style="margin-left:20px;">
-            <a href="/admin/add-category" class="btn btn-primary">Tambah</a>
+            <a href="/admin/add-category" class="btn btn-primary">ADD</a>
         </div>
 
         <div class="card-body">
@@ -56,7 +56,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><i class="fa fa-star"></i> Modal title</h5>
+        <h5 class="modal-title"><i class="fa fa-star"></i> Edit</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </button>
@@ -68,17 +68,17 @@
         <form method="post">
             @csrf
             <div class="form-group">
-                <label for="input-1">no_student</label>
+                <label for="input-1">Offense Name</label>
                 <input type="text" name="offense_name" class="form-control" id="input-1" placeholder="Enter Your Name">
             </div>
 
             <div class="form-group">
-                <label for="input-2">no_category</label>
+                <label for="input-2">Offense type</label>
                 <input type="text" name="offense_type"class="form-control" id="input-2" placeholder="Enter Your Email Address">
             </div>
 
             <div class="form-group">
-                <label for="input-3">total_point</label>
+                <label for="input-3">point</label>
                 <input type="text" name="point" class="form-control" id="input-3" placeholder="Enter Password">
             </div>
 

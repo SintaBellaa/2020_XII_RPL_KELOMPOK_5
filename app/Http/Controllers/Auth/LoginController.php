@@ -44,9 +44,9 @@ class LoginController extends Controller
         if ($user->hasRole('admin')) {
             return redirect ('admin/dashboard')->withSuccess('Anda Login Sebagai Admin');
         }elseif($user->hasRole('student')){
-            return  redirect ('student/dash-student')->withSuccess('Anda Login Sebagai Student');
+            return  redirect ('student/dashboard')->withSuccess('Anda Login Sebagai Student');
         }
-        return redirect()->route('dashboard/users');
+        //return redirect()->route('dashboard/users');
     }
 
     public function username()

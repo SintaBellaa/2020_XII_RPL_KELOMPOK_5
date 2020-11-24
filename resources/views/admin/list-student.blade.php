@@ -55,7 +55,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title"><i class="fa fa-star"></i> EDIT DAta</h5>
+        <h5 class="modal-title"><i class="fa fa-star"></i> Edit</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </button>
@@ -67,18 +67,28 @@
         <form method="post">
             @csrf
             <div class="form-group">
-                <label for="input-1">no_student</label>
-                <input type="text" name="offense_name" class="form-control" id="input-1" placeholder="Enter Your Name">
+                <label for="input-1">nis</label>
+                <input type="text" name="nis" class="form-control" id="input-1" placeholder="Enter  nis">
             </div>
 
             <div class="form-group">
-                <label for="input-2">no_category</label>
-                <input type="text" name="offense_type"class="form-control" id="input-2" placeholder="Enter Your Email Address">
+                <label for="input-2">name</label>
+                <input type="text" name="name"class="form-control" id="input-2" placeholder="Enter name">
             </div>
 
             <div class="form-group">
-                <label for="input-3">total_point</label>
-                <input type="text" name="point" class="form-control" id="input-3" placeholder="Enter Password">
+                <label for="input-3">class</label>
+                <input type="text" name="class" class="form-control" id="input-3" placeholder="Enter class">
+            </div>
+
+            <div class="form-group">
+                <label for="input-3">gender</label>
+                <input type="text" name="gender" class="form-control" id="input-3" placeholder="Enter gender">
+            </div>
+
+            <div class="form-group">
+                <label for="input-3">address</label>
+                <input type="text" name="point" class="form-control" id="input-3" placeholder="Enter address">
             </div>
 
             

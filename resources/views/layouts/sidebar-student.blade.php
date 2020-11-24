@@ -13,7 +13,7 @@
       <li class="sidebar-header">SMKS MAHAPUTRA CERDAS UTAMA</li>
      
       <li>
-        <a href="{{(url('/student/list'))}}" class="waves-effect">
+        <a href="{{URL::to('/student/list-student')}}" class="waves-effect">
           <i class="icon-calendar"></i> <span>list</span> 
         </a>
       </li>

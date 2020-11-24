@@ -23,43 +23,43 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
+                        <td>181910041</td>
+                        <td>iis widia</td>
+                        <td>xii Rpl 1</td>
+                        <td>perempuan</td>
+                        <td>Ciborerang</td>
                         
                     </tr>
                     <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
+                        <td>18191025</td>
+                        <td>Desmarita Fitriani</td>
+                        <td>Xii Rpl 1</td>
+                        <td>Perempuan</td>
+                        <td>cembul</td>
                        
                     </tr>
                     <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
+                        <td>18191083</td>
+                        <td>Sinta Bela</td>
+                        <td>xii Rpl 1</td>
+                        <td>Perempuan</td>
+                        <td>Bojong Waru</td>
                         
                     </tr>
                     <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
+                        <td>181910</td>
+                        <td>Windi Yulyani</td>
+                        <td>xii Rpl 1</td>
+                        <td>Perempuan</td>
+                        <td>Landean</td>
                         
                     </tr>
                     <tr>
-                        <td>Airi Satou</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>33</td>
-                        <td>2008/11/28</td>
+                        <td>181910</td>
+                        <td>Malay Cahya Aprita</td>
+                        <td>xii Rpl 1</td>
+                        <td>perempuan</td>
+                        <td>Sompok</td>
                         
                     </tr>
                 </tbody>

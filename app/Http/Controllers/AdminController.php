@@ -15,30 +15,8 @@ class AdminController extends Controller
     {
         return view('admin.dashboard');
     }
-
-    public function ListOffense()
-    {
-        return view('admin.list-offense');
-    }
-
-     public function EditListOffense()
-    {
-        return back()->withSuccess('Edit Berhasil');
-    }
-
     
-    public function ListCategory()
-    {
-        return view ('admin.list-category');
-    }
-
-    public function EditListCategory()
-    {
-        return back()->withSuccess('Edit Berhasil');
-    }
-
-    
-    
+    //student
     public function ListStudent()
     {
         return view ('admin.list-student');
@@ -61,9 +39,11 @@ class AdminController extends Controller
         return back()->withSuccess('Delete Berhasil');
     }
 
-
-
     //offense
+     public function ListOffense()
+    {
+        return view('admin.list-offense');
+    }
     public function AddOffense(){
         return view('admin.add-offense');
          
@@ -72,10 +52,16 @@ class AdminController extends Controller
     {
         return redirect('/admin/list-offense')->withSuccess($request->input('nama_siswa').' Berhasil Ditambahkan');
     }
-
-
+      public function EditListOffense()
+    {
+        return back()->withSuccess('Edit Berhasil');
+    }
 
     //category
+     public function ListCategory()
+    {
+        return view ('admin.list-category');
+    }
     public function AddCategory(){
         return view('admin.add-category');
     }
@@ -83,7 +69,10 @@ class AdminController extends Controller
         return redirect('/admin/list-category')->withSuccess('Data Berhasil disimpan');
     }
     
-
+     public function EditListCategory()
+    {
+        return back()->withSuccess('Edit Berhasil');
+    }
     public function DeleteCategory()
     {
         return back()->withToastSuccess('Delete Berhasil');
