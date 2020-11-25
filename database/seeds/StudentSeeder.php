@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
-class Student extends Seeder
+use Illuminate\Support\Facades\DB;
+class StudentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,12 +11,22 @@ class Student extends Seeder
      */
     public function run()
     {
-       Student::create([
+        DB::table('students')->insert([
             'nis'=>'1819.10.025',
             'name'=>'Desma',
             'class'=>'XII RPL 1',
             'gender'=>'Perempuan',
             'address'=>'kp.cembul'
-    ]);
-  }
+        ]);
+
+        DB::table('students')->insert([
+            'nis'=>'1819.10.025',
+            'name'=>'wakwaw',
+            'class'=>'XII RPL 1',
+            'gender'=>'Perempuan',
+            'address'=>'kp.cembul'
+        ]);
+
+
+    }
 }

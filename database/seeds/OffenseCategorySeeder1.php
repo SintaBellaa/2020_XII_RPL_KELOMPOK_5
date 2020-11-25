@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class OffenseCategorySeeder extends Seeder
+class OffenseCategorySeeder1 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,13 +11,13 @@ class OffenseCategorySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('offense_category')->insert([
+         Offense_category::create([
             'offense_name' => 'cat rambut',
             'offense_type' => 'pribadi',
             'point'=>'5'
         ]);
 
-        DB::table('offense_category')->insert([
+         Offense_category::create([
             'offense_name' => 'merokok',
             'offense_type' => 'berat',
             'point'=>'5'
