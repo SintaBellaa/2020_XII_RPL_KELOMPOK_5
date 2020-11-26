@@ -17,8 +17,9 @@
                 <thead>
                     <tr>
                         <th>no</th>
-                        <th>no siswa</th>
-                        <th>no kategori</th>
+                        <th>nama siswa</th>
+                        <th>nama pelanggaran</th>
+                        <th>poin</th>
                         <th class="text-center">Action</th>
                         
                     </tr>
@@ -26,8 +27,9 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>15</td>
-                        <td>1</td>
+                        <td>desmarita</td>
+                        <td>menyimpan sepatu tidak pada tempatnya</td>
+                        <td>3</td>
                         <td class="text-center">
                             <a href="" data-toggle="modal" data-target="#defaultsizemodal">
                                 <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
@@ -59,7 +61,7 @@
   </div>
   <div class="modal-body">
      <div class="card-body">
-        <div class="card-title">Form Add Offense</div>
+        <div class="card-title">Form Edit Offense</div>
         <hr>
         <form method="post">
             @csrf

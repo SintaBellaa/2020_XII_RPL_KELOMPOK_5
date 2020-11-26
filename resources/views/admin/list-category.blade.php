@@ -24,10 +24,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
+                        <td>1</td>
+                        <td>cat rambut</td>
+                        <td>pribadi</td>
+                        <td>5</td>
                         <td class="text-center">
                             <a href="" data-toggle="modal" data-target="#defaultsizemodal">
                                 <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>

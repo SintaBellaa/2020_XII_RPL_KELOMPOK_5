@@ -24,11 +24,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
+                        <td>1819.10.025</td>
+                        <td>Desma</td>
+                        <td>XII RPL 1</td>
+                        <td>perempuan</td>
+                        <td>kp.cembul</td>
                         <td class="text-center">
                             <a href="" data-toggle="modal" data-target="#defaultsizemodal">
                                 <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
@@ -62,7 +62,7 @@
   </div>
   <div class="modal-body">
      <div class="card-body">
-        <div class="card-title">Form Add Category</div>
+        <div class="card-title">Form Edit Student</div>
         <hr>
         <form method="post">
             @csrf
