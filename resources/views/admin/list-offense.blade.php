@@ -3,9 +3,9 @@
 <div class="row">
     <div class="col-lg-12">
       <div class="card">
-        <div class="card-header"><i class="fa fa-table"></i>List Pelanggaran</div>
+        <div class="card-header"><i class="fa fa-table"></i>List offense data</div>
         <div class="container" style="margin-left:20px;">
-            <a href="/admin/add-offense" class="btn btn-primary">Tambah</a>
+            <a href="/admin/add-offense" class="btn btn-primary">add</a>
         </div>
         
         <div class="card-body">

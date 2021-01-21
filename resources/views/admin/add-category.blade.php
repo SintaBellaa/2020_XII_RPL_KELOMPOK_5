@@ -16,10 +16,7 @@
 					  <input type="text" name="offense_name" class="form-control" id="input-1" placeholder="Enter offense_name">
 					 </div>
 
-					 <div class="form-group">
-					  <label for="input-2">offense type</label>
-					  <input type="text" name="offense_type"class="form-control" id="input-2" placeholder="Enter offense_type">
-					 </div>
+
 
 					 <div class="form-group">
 					  <label for="input-3">point</label>

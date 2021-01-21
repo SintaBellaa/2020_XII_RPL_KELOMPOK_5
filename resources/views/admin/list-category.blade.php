@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12">
       <div class="card">
-        <div class="card-header"><i class="fa fa-table"></i>List Kategori</div>
+        <div class="card-header"><i class="fa fa-table"></i>List category data</div>
         <div class="container" style="margin-left:20px;">
             <a href="/admin/add-category" class="btn btn-primary">ADD</a>
         </div>
@@ -63,18 +63,13 @@
   </div>
   <div class="modal-body">
      <div class="card-body">
-        <div class="card-title">Form Add Category</div>
+        <div class="card-title">Form edit Category</div>
         <hr>
         <form method="post">
             @csrf
             <div class="form-group">
                 <label for="input-1">Offense Name</label>
                 <input type="text" name="offense_name" class="form-control" id="input-1" placeholder="Enter Your Name">
-            </div>
-
-            <div class="form-group">
-                <label for="input-2">Offense type</label>
-                <input type="text" name="offense_type"class="form-control" id="input-2" placeholder="Enter Your Email Address">
             </div>
 
             <div class="form-group">

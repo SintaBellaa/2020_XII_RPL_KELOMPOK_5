@@ -13,24 +13,31 @@
       <li class="sidebar-header">MAIN NAVIGATION</li>
       <li>
         <a href="index.html" class="waves-effect">
-          <i class="icon-home"></i> <span>kelola pelanggaran</span> <i class="fa fa-angle-left pull-right"></i>
+          <i class="icon-home"></i> <span>Manage Offense</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="sidebar-submenu">
-          <li><a href="{{URL::to('/admin/list-offense')}}"><i class="fa fa-circle-o"></i>list pelanggaran</a></li>
-          <li><a href="{{URL::to('/admin/list-category')}}"><i class="fa fa-circle-o"></i>list kategori</a></li>
- 
-  
-          
+          <li><a href="{{URL::to('/admin/list-offense')}}"><i class="icon-list icons"></i>list offense data</a></li>
+    
+        </ul>
+      </li>
+
+       <li>
+        <a href="index.html" class="waves-effect">
+          <i class="zmdi zmdi-collection-item"></i> <span>Manage Category</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li><a href="{{URL::to('/admin/list-category')}}"><i class="icon-list icons"></i>list category data</a></li>
+    
         </ul>
       </li>
      
       <li>
         <a href="index.html" class="waves-effect">
-          <i class="zmdi zmdi-collection-item"></i> <span>kelola siswa</span> <i class="fa fa-angle-left pull-right"></i>
+          <i class="zmdi zmdi-accounts-list"></i> <span>Manage Student</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="sidebar-submenu">
-          <li><a href="{{URL::to('/admin/list-student') }}"><i class="icon-list icons"></i>List Data siswa</a></li>
-          <li><a href="{{URL::to('/admin/add-student') }}"><i class="zmdi zmdi-plus-square"></i>Tambah data siswa</a></li>
+          <li><a href="{{URL::to('/admin/list-student') }}"><i class="icon-list icons"></i>list student data</a></li>
+  
    
         </ul>
 

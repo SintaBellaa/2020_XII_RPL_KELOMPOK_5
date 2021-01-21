@@ -52,7 +52,6 @@ Route::group(['middleware' => ['role:admin']], function () {
 		//ini untuk fitur kategori
 		Route::get('admin/list-category' , 'AdminController@ListCategory');
 		Route::post('admin/list-category' , 'AdminController@EditListCategory');
-		
 		Route::get('admin/add-category','AdminController@AddCategory');
 		Route::post('admin/add-category','AdminController@SaveAddCategory');
 		

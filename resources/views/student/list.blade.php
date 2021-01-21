@@ -30,39 +30,6 @@
                         <td>Ciborerang</td>
                         
                     </tr>
-                    <tr>
-                        <td>18191025</td>
-                        <td>Desmarita Fitriani</td>
-                        <td>Xii Rpl 1</td>
-                        <td>Perempuan</td>
-                        <td>cembul</td>
-                       
-                    </tr>
-                    <tr>
-                        <td>18191083</td>
-                        <td>Sinta Bela</td>
-                        <td>xii Rpl 1</td>
-                        <td>Perempuan</td>
-                        <td>Bojong Waru</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>181910</td>
-                        <td>Windi Yulyani</td>
-                        <td>xii Rpl 1</td>
-                        <td>Perempuan</td>
-                        <td>Landean</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>181910</td>
-                        <td>Malay Cahya Aprita</td>
-                        <td>xii Rpl 1</td>
-                        <td>perempuan</td>
-                        <td>Sompok</td>
-                        
-                    </tr>
-                </tbody>
                
             </table>
             </div>
