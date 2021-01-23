@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-header"><i class="fa fa-table"></i>List category data</div>
         <div class="container" style="margin-left:20px;">
-            <a href="/admin/add-category" class="btn btn-primary">ADD</a>
+            <a href="/admin/add-category" class="btn btn-primary">ADD category</a>
         </div>
 
         <div class="card-body">
@@ -23,25 +23,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>cat rambut</td>
-                        <td>pribadi</td>
-                        <td>5</td>
-                        <td class="text-center">
-                            <a href="" data-toggle="modal" data-target="#defaultsizemodal">
-                                <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
-                            </a> &nbsp
+                       @foreach ($category as $c)
+                       <tr>
+                           <td>{{ $c->id }}</td>
+                           <td>{{ $c->offense_name }}</td>
+                           <td>{{ $c->offense_type }}</td>
+                           <td>{{ $c->point }}</td>
 
-                            
-                            <a href="{{URL::to('/admin/list-category/delete')}}" data-toggle="tooltip" data-placement="top" title="Delete">
-                                <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
-                            </a>
-                            
-                        </td>
-                        
-                        
-                    </tr>
+
+                              <td class="text-center">
+                                <a href="" data-toggle="modal" data-target="#defaultsizemodal">
+                                    <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
+                                </a> &nbsp
+
+                                <a href="{{URL::to('/admin/list-category/delete')}}" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
+                                </a>
+                                
+                            </td> 
+                        </tr>
+                    @endforeach
                     
                 </tbody>
 

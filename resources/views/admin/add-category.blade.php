@@ -9,14 +9,17 @@
 	<div class="card-body">
 				   <div class="card-title">Form Add Category</div>
 				   <hr>
-				    <form method="post">
+				    <form action="/admin/StoreCategory" method="post">
 				    	@csrf
 					 <div class="form-group">
 					  <label for="input-1">offense name</label>
 					  <input type="text" name="offense_name" class="form-control" id="input-1" placeholder="Enter offense_name">
 					 </div>
 
-
+					  <div class="form-group">
+					  <label for="input-1">offense Type</label>
+					  <input type="text" name="offense_type" class="form-control" id="input-1" placeholder="Enter offense_type">
+					 </div>
 
 					 <div class="form-group">
 					  <label for="input-3">point</label>

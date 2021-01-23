@@ -43,27 +43,29 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::get('admin/dashboard','AdminController@index');
 		
 		//ini untuk fitur pelanggaran
-		Route::get('admin/list-offense','AdminController@ListOffense');
-		Route::get('admin/add-offense','AdminController@AddOffense');
-		Route::post('admin/add-offense','AdminController@saveAddOffense');
-		Route::post('admin/list-offense' , 'AdminController@EditListOffense');
+		Route::get('admin/list-offense','OffenseController@ListOffense');
+		Route::get('admin/add-offense','OffenseController@AddOffense');
+		Route::post('admin/add-offense','OffenseController@saveAddOffense');
+		Route::post('admin/list-offense' , 'OffenseController@EditListOffense');
 		
 		
 		//ini untuk fitur kategori
-		Route::get('admin/list-category' , 'AdminController@ListCategory');
-		Route::post('admin/list-category' , 'AdminController@EditListCategory');
-		Route::get('admin/add-category','AdminController@AddCategory');
-		Route::post('admin/add-category','AdminController@SaveAddCategory');
-		
-		Route::get('/admin/list-category/delete' , 'AdminController@DeleteCategory');
+		Route::get('admin/list-category' , 'CategoryController@index');
+		Route::get('admin/add-category','CategoryController@AddCategory');
+		Route::post('admin/StoreCategory' , 'CategoryController@StoreCategory');
+
+		Route::post('admin/list-category' , 'CategoryController@EditListCategory');
+		Route::get('/admin/list-category/delete' , 'CategoryController@DeleteCategory');
+
+
 		
 		//ini untuk fitur kelola siswa
-		Route::get('admin/list-student','AdminController@ListStudent');
-		Route::get('admin/add-student','AdminController@AddStudent');
-		Route::post('admin/add-student','AdminController@SaveAddStudent');
+		Route::get('admin/list-student','DataStudentController@ListStudent');
+		Route::get('admin/add-student','DataStudentController@AddStudent');
+		Route::post('admin/add-student','DataStudentController@SaveAddStudent');
 
-		Route::post('admin/list-student','AdminController@EditStudent');
-		Route::get('/admin/student/delete' , 'AdminController@DeleteStudent');
+		Route::post('admin/list-student','DataStudentController@EditStudent');
+		Route::get('/admin/student/delete' , 'DataStudentController@DeleteStudent');
 		
 	});
 
