@@ -12,12 +12,12 @@ class CategoryController extends Controller
     public function index()
      {
         $category = DB::table('offense_category')->get();
-        return view ('admin.list-category',['category'=> $category ]);
+        return view ('category.list-category',['category'=> $category ]);
      }
 
     public function AddCategory()
      {
-        return view('admin.add-category');
+        return view('category.add-category');
      }
 
     
@@ -33,13 +33,28 @@ class CategoryController extends Controller
      }
 
     
-    public function EditListCategory()
+    public function EditCategory($id)
+
      {
-        return back()->withSuccess('Edit Berhasil');
+
+        $category = DB::table('offense_category')->where('id',$id)->first();
+        return view('category.edit-category',['category' => $category]);
+     }
+
+     public function UpdateCategory(Request $request,$id)
+     {
+       
+        DB::table('offense_category')->update([
+                'offense_name'  => $request->offense_name,
+                'point'         => $request->point
+        ]);
+
+        return redirect('admin/list-category')->withSuccess('Data Berhasil disimpan');
      }
 
     public function DeleteCategory()
-     {
+    {   
         return back()->withToastSuccess('Delete Berhasil');
-     }
+    }
+
 }

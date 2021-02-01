@@ -32,7 +32,7 @@
 
 
                               <td class="text-center">
-                                <a href="" data-toggle="modal" data-target="#defaultsizemodal">
+                                <a href="{{URL::to('/admin/edit-category/'.$c->id)}}">
                                     <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
                                 </a> &nbsp
 
@@ -53,41 +53,4 @@
 </div>
 </div><!-- End Row-->
 
-<div class="modal fade" id="defaultsizemodal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><i class="fa fa-star"></i> Edit</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-  <div class="modal-body">
-     <div class="card-body">
-        <div class="card-title">Form edit Category</div>
-        <hr>
-        <form method="post">
-            @csrf
-            <div class="form-group">
-                <label for="input-1">Offense Name</label>
-                <input type="text" name="offense_name" class="form-control" id="input-1" placeholder="Enter Your Name">
-            </div>
-
-            <div class="form-group">
-                <label for="input-3">point</label>
-                <input type="text" name="point" class="form-control" id="input-3" placeholder="Enter Password">
-            </div>
-
-            
-
-    </div>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-    <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Save changes</button>
-</form>
-</div>
-</div>
-</div>
-</div>
 @endsection

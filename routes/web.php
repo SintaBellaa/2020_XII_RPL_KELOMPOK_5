@@ -54,7 +54,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::get('admin/add-category','CategoryController@AddCategory');
 		Route::post('admin/StoreCategory' , 'CategoryController@StoreCategory');
 
-		Route::post('admin/list-category' , 'CategoryController@EditListCategory');
+		Route::get('/admin/edit-category/{id}' , 'CategoryController@EditCategory');
+		Route::post('admin/UpdateCategory/{id}' , 'CategoryController@UpdateCategory');
 		Route::get('/admin/list-category/delete' , 'CategoryController@DeleteCategory');
 
 
@@ -63,7 +64,6 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::get('admin/list-student','DataStudentController@ListStudent');
 		Route::get('admin/add-student','DataStudentController@AddStudent');
 		Route::post('admin/add-student','DataStudentController@SaveAddStudent');
-
 		Route::post('admin/list-student','DataStudentController@EditStudent');
 		Route::get('/admin/student/delete' , 'DataStudentController@DeleteStudent');
 		

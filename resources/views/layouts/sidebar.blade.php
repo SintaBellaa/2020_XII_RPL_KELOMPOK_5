@@ -11,19 +11,10 @@
 	 </div>
 	 <ul class="sidebar-menu do-nicescrol">
       <li class="sidebar-header">MAIN NAVIGATION</li>
-      <li>
-        <a href="index.html" class="waves-effect">
-          <i class="icon-home"></i> <span>Manage Offense</span> <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="sidebar-submenu">
-          <li><a href="{{URL::to('/admin/list-offense')}}"><i class="icon-list icons"></i>list offense data</a></li>
-    
-        </ul>
-      </li>
-
+     
        <li>
         <a href="index.html" class="waves-effect">
-          <i class="zmdi zmdi-collection-item"></i> <span>Manage Category</span> <i class="fa fa-angle-left pull-right"></i>
+          <i class="zmdi zmdi-collection-item"></i> <span>Manage Offense Data Category</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="sidebar-submenu">
           <li><a href="{{URL::to('/admin/list-category')}}"><i class="icon-list icons"></i>list category data</a></li>
@@ -43,6 +34,17 @@
 
 
       </li>
+
+       <li>
+        <a href="index.html" class="waves-effect">
+          <i class="icon-home"></i> <span>Manage Offense</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li><a href="{{URL::to('/admin/list-offense')}}"><i class="icon-list icons"></i>list offense data</a></li>
+    
+        </ul>
+      </li>
+
 
        <li>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();

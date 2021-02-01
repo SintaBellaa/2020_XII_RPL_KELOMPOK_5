@@ -9,10 +9,10 @@ class OffenseController extends Controller
      //offense
      public function ListOffense()
     {
-        return view('admin.list-offense');
+        return view('offense.list-offense');
     }
     public function AddOffense(){
-        return view('admin.add-offense');
+        return view('offense.add-offense');
          
     }
     public function SaveAddOffense(Request $request)

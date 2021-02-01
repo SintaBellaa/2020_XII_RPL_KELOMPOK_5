@@ -9,11 +9,11 @@ class DataStudentController extends Controller
      //student
     public function ListStudent()
     {
-        return view ('admin.list-student');
+        return view ('admin-student.list-student');
 
     }
     public function AddStudent(){
-        return view('admin.add-student');
+        return view('admin-student.add-student');
 
     }
     public function SaveAddStudent(){
