@@ -16,6 +16,7 @@
               <table id="example" class="table table-bordered">
                 <thead>
                     <tr>
+                    <th>no</th>
                         <th>nis</th>
                         <th>nama</th>
                         <th>kelas</th>
@@ -26,25 +27,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1819.10.025</td>
-                        <td>Desma</td>
-                        <td>XII RPL 1</td>
-                        <td>perempuan</td>
-                        <td>kp.cembul</td>
-                        <td class="text-center">
-                            <a href="" data-toggle="modal" data-target="#defaultsizemodal">
-                                <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
-                            </a> &nbsp
+                        @foreach ($student as $s)
+                       <tr>
+                           <td>{{ $s->id }}</td>
+                           <td>{{ $s->nis }}</td>
+                           <td>{{ $s->name }}</td>
+                           <td>{{ $s->class }}</td>
+                           <td>{{ $s->gender }}</td>
+                           <td>{{ $s->address }}</td>
+                            <td class="text-center">
+                                <a href="{{URL::to('/admin/edit-student/'.$s->id)}}" data-toggle="modal" data-target="#defaultsizemodal">
+                                    <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
+                                </a> &nbsp
 
-                            
-                            <a href="{{URL::to('/admin/student/delete')}}" data-toggle="tooltip" data-placement="top" title="Delete">
-                                <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
-                            </a>
-                            
-                        </td>
+                                
+                                <a href="{{URL::to('/admin/student/delete')}}" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
+                                </a>
+                                
+                            </td>
                         
                     </tr>
+                    @endforeach
                 </tbody>
                
             </table>

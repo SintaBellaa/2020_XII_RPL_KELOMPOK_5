@@ -9,7 +9,7 @@
 	<div class="card-body">
 				   <div class="card-title">Form Add Student</div>
 				   <hr>
-				    <form method="post">
+				    <form action="/admin/StoreStudent" method="post">
 				    	@csrf
 					 <div class="form-group">
 					  <label for="input-1">nis</label>
@@ -23,7 +23,7 @@
 
 					 <div class="form-group">
 					  <label for="input-3">kelas</label>
-					  <input type="text" name="class" class="form-control" id="input-3" placeholder="Enter Password">
+					  <input type="text" name="class" class="form-control" id="input-3" placeholder="Enter kelas">
 					 </div>
 
 					  <div class="form-group">

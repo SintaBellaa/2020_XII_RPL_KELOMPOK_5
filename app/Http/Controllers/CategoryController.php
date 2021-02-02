@@ -36,7 +36,6 @@ class CategoryController extends Controller
     public function EditCategory($id)
 
      {
-
         $category = DB::table('offense_category')->where('id',$id)->first();
         return view('category.edit-category',['category' => $category]);
      }

@@ -61,10 +61,12 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 		
 		//ini untuk fitur kelola siswa
-		Route::get('admin/list-student','DataStudentController@ListStudent');
+		Route::get('admin/list-student','DataStudentController@IndexStudent');
 		Route::get('admin/add-student','DataStudentController@AddStudent');
-		Route::post('admin/add-student','DataStudentController@SaveAddStudent');
-		Route::post('admin/list-student','DataStudentController@EditStudent');
+		Route::post('admin/StoreStudent' , 'DataStudentController@StoreStudent');
+
+		Route::get('admin/edit-student{id}','DataStudentController@EditStudent');
+		Route::post('admin/UpdateStudent/{id}' , 'StudentController@UpdateStudent');
 		Route::get('/admin/student/delete' , 'DataStudentController@DeleteStudent');
 		
 	});
