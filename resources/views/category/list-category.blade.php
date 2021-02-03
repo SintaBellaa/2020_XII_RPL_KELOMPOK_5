@@ -7,6 +7,7 @@
         <div class="card-header"><i class="fa fa-table"></i>List category data</div>
         <div class="container" style="margin-left:20px;">
             <a href="/admin/add-category" class="btn btn-primary">ADD category</a>
+
         </div>
 
         <div class="card-body">
@@ -17,7 +18,6 @@
                     <tr>
                         <th>no</th>
                         <th>nama pelanggaran</th>
-                        <th>jenis pelanggaran</th>
                         <th>poin</th>
                         <th>action</th>
                     </tr>
@@ -27,7 +27,6 @@
                        <tr>
                            <td>{{ $c->id }}</td>
                            <td>{{ $c->offense_name }}</td>
-                           <td>{{ $c->offense_type }}</td>
                            <td>{{ $c->point }}</td>
 
 
@@ -36,7 +35,7 @@
                                     <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
                                 </a> &nbsp
 
-                                <a href="{{URL::to('/admin/list-category/delete')}}" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <a href="{{URL::to('/admin/destroy-category/{id}')}}" data-toggle="tooltip" data-placement="top" title="Delete">
                                     <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
                                 </a>
                                 

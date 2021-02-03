@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Student extends Model
 {
     protected  $table = ['students'];
     protected $guarded = [];
+
+
 }

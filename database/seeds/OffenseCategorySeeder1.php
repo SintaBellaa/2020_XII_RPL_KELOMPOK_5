@@ -13,13 +13,11 @@ class OffenseCategorySeeder1 extends Seeder
     {
          Offense_category::create([
             'offense_name' => 'cat rambut',
-            'offense_type' => 'pribadi',
             'point'=>'5'
         ]);
 
          Offense_category::create([
             'offense_name' => 'merokok',
-            'offense_type' => 'berat',
             'point'=>'5'
         ]);
     }

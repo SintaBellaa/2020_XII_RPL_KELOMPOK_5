@@ -48,6 +48,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::post('admin/add-offense','OffenseController@saveAddOffense');
 		Route::post('admin/list-offense' , 'OffenseController@EditListOffense');
 		
+
 		
 		//ini untuk fitur kategori
 		Route::get('admin/list-category' , 'CategoryController@index');
@@ -56,7 +57,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 		Route::get('/admin/edit-category/{id}' , 'CategoryController@EditCategory');
 		Route::post('admin/UpdateCategory/{id}' , 'CategoryController@UpdateCategory');
-		Route::get('/admin/list-category/delete' , 'CategoryController@DeleteCategory');
+		Route::get('/admin/destroy-category/{id}' , 'CategoryController@DestroyCategory');
 
 
 		

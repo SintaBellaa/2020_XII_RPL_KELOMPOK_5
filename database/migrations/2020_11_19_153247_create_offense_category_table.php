@@ -16,9 +16,9 @@ class CreateOffenseCategoryTable extends Migration
       Schema::create('offense_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('offense_name');
-            $table->string('offense_type');
             $table->integer('point');
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 
