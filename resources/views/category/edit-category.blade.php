@@ -19,7 +19,7 @@
 
            <div class="form-group">
             <label for="input-2">point</label>
-            <input value="{{$category->point}}" type="text" name="point" class="form-control" id="input-3" placeholder="Enter point">
+            <input value="{{$category->point}}" type="text" name="point" class="form-control" id="input-2" placeholder="Enter point">
            </div>
 
            

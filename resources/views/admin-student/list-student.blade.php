@@ -36,7 +36,7 @@
                            <td>{{ $s->gender }}</td>
                            <td>{{ $s->address }}</td>
                             <td class="text-center">
-                                <a href="{{URL::to('/admin/edit-student/'.$s->id)}}" data-toggle="modal" data-target="#defaultsizemodal">
+                                <a href="{{URL::to('/admin/edit-student/'.$s->id)}}">
                                     <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
                                 </a> &nbsp
 
@@ -45,9 +45,8 @@
                                     <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
                                 </a>
                                 
-                            </td>
-                        
-                    </tr>
+                            </td> 
+                      </tr>
                     @endforeach
                 </tbody>
                
@@ -58,56 +57,4 @@
         </div>
       </div><!-- End Row-->
 
-<div class="modal fade" id="defaultsizemodal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><i class="fa fa-star"></i> Edit</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-  <div class="modal-body">
-     <div class="card-body">
-        <div class="card-title">Form Edit Student</div>
-        <hr>
-        <form method="post">
-            @csrf
-            <div class="form-group">
-                <label for="input-1">nis</label>
-                <input type="text" name="nis" class="form-control" id="input-1" placeholder="Enter  nis">
-            </div>
-
-            <div class="form-group">
-                <label for="input-2">name</label>
-                <input type="text" name="name"class="form-control" id="input-2" placeholder="Enter name">
-            </div>
-
-            <div class="form-group">
-                <label for="input-3">class</label>
-                <input type="text" name="class" class="form-control" id="input-3" placeholder="Enter class">
-            </div>
-
-            <div class="form-group">
-                <label for="input-3">gender</label>
-                <input type="text" name="gender" class="form-control" id="input-3" placeholder="Enter gender">
-            </div>
-
-            <div class="form-group">
-                <label for="input-3">address</label>
-                <input type="text" name="point" class="form-control" id="input-3" placeholder="Enter address">
-            </div>
-
-            
-
-    </div>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-    <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Save changes</button>
-</form>
-</div>
-</div>
-</div>
-</div>
 @endsection

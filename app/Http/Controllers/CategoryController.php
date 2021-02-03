@@ -25,7 +25,6 @@ class CategoryController extends Controller
      {
             DB::table('offense_category')->insert([
                 'offense_name'  => $request->offense_name,
-                'offense_type'  => $request->offense_type,
                 'point'         => $request->point
         ]);
 
@@ -43,7 +42,7 @@ class CategoryController extends Controller
      public function UpdateCategory(Request $request,$id)
      {
        
-        DB::table('offense_category')->update([
+        DB::table('offense_category')->where('id' ,$id)->update([
                 'offense_name'  => $request->offense_name,
                 'point'         => $request->point
         ]);

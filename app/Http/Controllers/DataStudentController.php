@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
-use App\student;
+use App\Student;
 
 class DataStudentController extends Controller
 {
@@ -39,18 +39,17 @@ class DataStudentController extends Controller
       public function EditStudent($id)
     {
         $student = DB::table('students')->where('id',$id)->first();
-        return view('student.edit-student',['student' => $student]);
+        return view('admin-student.edit-student',['student' => $student]);
      }
 
      public function UpdateStudent(Request $request,$id)
      {
-
-        DB::table('students')->update([
+        DB::table('students')->where('id',$id)->update([
                 'nis'  => $request->nis,
                 'name'  => $request->name,
                 'class'  => $request->class,
                 'gender' => $request->gender,
-                'address' => $request->address
+                'address' => $request->adress
         ]);
         return redirect('admin/list-student')->withSuccess('Edit Berhasil');
      }
