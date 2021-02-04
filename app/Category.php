@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-    protected  $table = ['offense_category'];
+//use SoftDeletes;
+
+    protected  $table = ['offense_categorys'];
     protected $guarded = [''];
-    protected $dates = ['deleted_at'];
+    //protected $dates = ['deleted_at'];
 }

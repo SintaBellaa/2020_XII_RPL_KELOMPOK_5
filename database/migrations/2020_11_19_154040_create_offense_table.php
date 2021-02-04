@@ -18,7 +18,7 @@ class CreateOffenseTable extends Migration
             $table->foreignId('no_student');
             $table->foreign('no_student')->references('id')->on('students');
             $table->foreignId('no_category');
-            $table->foreign('no_category')->references('id')->on('offense_category');
+            $table->foreign('no_category')->references('id')->on('offense_category')->onDelete('cascade')->onUpdate('cascade');
             $table->string('total_point');
             $table->timestamps();
         });

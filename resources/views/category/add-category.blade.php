@@ -18,7 +18,7 @@
 
 					 <div class="form-group">
 					  <label for="input-3">point</label>
-					  <input type="text" name="point" class="form-control" id="input-3" placeholder="Enter point">
+					  <input type="number" name="point" class="form-control" id="input-3" placeholder="Enter point">
 					 </div>
 
 					 

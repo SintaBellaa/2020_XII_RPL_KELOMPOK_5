@@ -49,12 +49,14 @@ class CategoryController extends Controller
 
         return redirect('admin/list-category')->withSuccess('Data Berhasil disimpan');
      }
+ 
+      public function DestroyCategory($id)
+    {
+        $deleteCategory  = DB::table('offense_category')->where('id', $id)->delete();
+        return back()->withToastSuccess('Berhasil dihapus');
 
-    public function DestroyCategory()
-    {   
-        $category = Category::find($id);
-        $category->delete();
-        return redirect('admin/list-category')->withToasSuccess('Delete Berhasil');
+
     }
+          }
 
-}
+

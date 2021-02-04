@@ -35,7 +35,7 @@
                                     <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
                                 </a> &nbsp
 
-                                <a href="{{URL::to('/admin/destroy-category/{id}')}}" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <a href="{{URL::to('/admin/destroy-category/'.$c->id)}}" data-toggle="tooltip" data-placement="top" title="Delete">
                                     <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
                                 </a>
                                 
