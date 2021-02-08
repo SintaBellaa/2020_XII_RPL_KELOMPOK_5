@@ -23,12 +23,26 @@
 
 					 <div class="form-group">
 					  <label for="input-3">kelas</label>
-					  <input type="text" name="class" class="form-control" id="input-3" placeholder="Enter kelas">
+					  <SELECT type="text" class="form-control" name="class" value="">
+					  	<option></option>
+					  	<option>X RPL</option>
+					  	<option>X MM</option>
+					  	<option>XI RPL</option>
+					  	<option>XI MM</option>
+					  	<option>XII RPL 1</option>
+					  	<option>XII RPL 2</option>
+					  	<option>XII MM</option>
+					  	
+					  </SELECT>
 					 </div>
 
-					  <div class="form-group">
-					  <label for="input-3">jenis kelamin</label>
-					  <input type="text" name="gender" class="form-control" id="input-3" placeholder="Enter Gender">
+					 <div class="form-group">
+					  <label for="input-3">jenis kelamin</label><br>
+					 <SELECT type="text" class="form-control" name="gender" value="">
+					 	<option></option>
+					  	<option>Laki-Laki</option>
+					  	<option>Perempuan</option>
+					  </SELECT>
 					 </div>
 
 					  <div class="form-group">

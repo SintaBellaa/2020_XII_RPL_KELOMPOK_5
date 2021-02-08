@@ -9,7 +9,7 @@
             <a href="/admin/add-category" class="btn btn-primary">ADD category</a>
 
         </div>
-
+`
         <div class="card-body">
           <div class="table-responsive">
 
@@ -23,9 +23,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                       @foreach ($category as $c)
+                       @foreach ($category as $id => $c)
                        <tr>
-                           <td>{{ $c->id }}</td>
+                           <td>{{ $id+1 }}</td>
                            <td>{{ $c->offense_name }}</td>
                            <td>{{ $c->point }}</td>
 
