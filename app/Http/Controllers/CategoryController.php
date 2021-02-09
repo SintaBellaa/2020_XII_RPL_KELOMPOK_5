@@ -23,10 +23,15 @@ class CategoryController extends Controller
     
     public function StoreCategory(Request $request)
      {
-            DB::table('offense_category')->insert([
-                'offense_name'  => $request->offense_name,
-                'point'         => $request->point
-        ]);
+           $this->validate($request,[
+            'offense_name'  => 'required',
+            'point'         => 'required|numeric|min:1',
+           ]);
+
+           $category = new Category;
+           $category->offense_name   = $request->offense_name;
+           $category->point          = $request->point;
+           $category->save();
 
         return redirect('admin/list-category')->withSuccess('Data Berhasil disimpan');
      }
@@ -37,15 +42,20 @@ class CategoryController extends Controller
      {
         $category = DB::table('offense_category')->where('id',$id)->first();
         return view('category.edit-category',['category' => $category]);
+
+
      }
 
      public function UpdateCategory(Request $request,$id)
      {
        
-        DB::table('offense_category')->where('id' ,$id)->update([
-                'offense_name'  => $request->offense_name,
-                'point'         => $request->point
-        ]);
+         $this->validate($request,[
+            'offense_name'       => 'required',
+            'point'              => 'required|numeric|min:1',
+           ]);
+
+           $category = new Category;
+           $category->offense_name = $request->offense_name;
 
         return redirect('admin/list-category')->withSuccess('Data Berhasil disimpan');
      }

@@ -12,13 +12,23 @@
 				    <form action="/admin/StoreCategory" method="post">
 				    	@csrf
 					 <div class="form-group">
-					  <label for="input-1">offense name</label>
-					  <input type="text" name="offense_name" class="form-control" id="input-1" placeholder="Enter offense_name">
+					  <label> offense name <span style="color: red"> *</span></label>
+					  <input type="text" name="offense_name" class="form-control form-control-rounded @error('offense_name') is-invalid @enderror" placeholder="Masukkan Nama Pelanggaran" value="{{ old('offense_name') }}">
+					  @error('offense_name')
+					  <span class="invalid-feedback" role="alert">
+					  	<strong>{{ $message }}</strong>
+					  </span>
+					  @enderror
 					 </div>
 
 					 <div class="form-group">
-					  <label for="input-3">point</label>
-					  <input type="number" name="point" class="form-control" id="input-3" placeholder="Enter point">
+					  <label> point <span style="color: red"> </span></label>
+					  <input type="text" name="point" class="form-control form-control-rounded @error('point') is-invalid @enderror" placeholder="Masukkan Point" value="{{ old('point') }}">
+					  @error('point')
+					  <span class="invalid-feedback" role="alert">
+					  	<strong>{{ $message }}</strong>
+					  </span>
+					  @enderror
 					 </div>
 
 					 

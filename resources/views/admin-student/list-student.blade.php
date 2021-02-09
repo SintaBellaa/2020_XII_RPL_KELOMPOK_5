@@ -5,7 +5,7 @@
           <div class="card">
             <div class="card-header"><i class="fa fa-table"></i> Data siswa</div>
             <div class="container" style="margin-left:20px;">
-            <a href="/admin/add-student" class="btn btn-primary">add</a>
+            <a href="/admin/add-student" class="btn btn-primary">Add Student</a>
         </div>
              <div class="table-responsive">
                

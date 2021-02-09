@@ -12,16 +12,24 @@
             <form action="{{URL::to('admin/UpdateCategory/'.$category->id)}}" method="post">
               @csrf
            <div class="form-group">
-            <label for="input-1" >offense name</label>
-            <input value="{{$category->offense_name}}" type="text" name="offense_name" class="form-control" id="input-1" placeholder="Enter offense_name">
+            <label> offense name <span style="color: red"> *</span></label>
+            <input type="text" name="offense_name" class="form-control form-control-rounded @error('offense_name') is-invalid @enderror" placeholder="Masukkan Nama Pelanggaran" value="{{ old('offense_name') }}">
+            @error('offense_name')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
            </div>
 
-
-           <div class="form-group">
-            <label for="input-2">point</label>
-            <input value="{{$category->point}}" type="text" name="point" class="form-control" id="input-2" placeholder="Enter point">
+          <div class="form-group">
+            <label> Point <span style="color: red"> *</span></label>
+            <input type="text" name="point" class="form-control form-control-rounded @error('point') is-invalid @enderror" placeholder="Masukkan Point" value="{{ old('point') }}">
+            @error('point')
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
            </div>
-
            
            <div class="form-group">
             <button type="submit" class="btn btn-primary shadow-primary px-5"><i></i>submit</button>
