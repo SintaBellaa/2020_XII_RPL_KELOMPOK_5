@@ -25,11 +25,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($offense as $key=> $data)
                     <tr>
-                        <td>1</td>
-                        <td>desmarita</td>
-                        <td>menyimpan sepatu tidak pada tempatnya</td>
-                        <td>3</td>
+                        <td>{{$key+1}}</td>
+                        <td>{{$data->name}}</td>
+                        <td>{{$data->offense_name}}</td>
+                        <td>{{$data->point}}</td>
                         <td class="text-center">
                             <a href="" data-toggle="modal" data-target="#defaultsizemodal">
                                 <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
@@ -39,7 +40,7 @@
                         </td>
                         
                     </tr>
-                    
+                    @endforeach
                 </tbody>
                
             </table>

@@ -11,8 +11,8 @@ class CategoryController extends Controller
      //category
     public function index()
      {
-        $category = DB::table('offense_category')->get();
-        return view ('category.list-category',['category'=> $category ]);
+        $data['category'] = Category::all();
+        return view ('category.list-category',$data);
      }
 
     public function AddCategory()
@@ -62,7 +62,7 @@ class CategoryController extends Controller
  
       public function DestroyCategory($id)
     {
-        $deleteCategory  = DB::table('offense_category')->where('id', $id)->delete();
+      Category::whereId($id)->delete();
         return back()->withToastSuccess('Berhasil dihapus');
 
 

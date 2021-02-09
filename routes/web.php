@@ -68,7 +68,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 		Route::get('/admin/edit-student/{id}','DataStudentController@EditStudent');
 		Route::post('admin/UpdateStudent/{id}' , 'DataStudentController@UpdateStudent');
-		Route::get('/admin/student/delete' , 'DataStudentController@DeleteStudent');
+		Route::get('/admin/student/delete/{id}' , 'DataStudentController@DeleteStudent');
 		
 	});
 

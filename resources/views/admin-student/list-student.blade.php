@@ -27,9 +27,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach ($student as $s)
+                        @foreach ($student as $key=> $s)
                        <tr>
-                           <td>{{ $s->id }}</td>
+                           <td>{{ $key+1 }}</td>
                            <td>{{ $s->nis }}</td>
                            <td>{{ $s->name }}</td>
                            <td>{{ $s->class }}</td>
@@ -41,7 +41,7 @@
                                 </a> &nbsp
 
                                 
-                                <a href="{{URL::to('/admin/student/delete')}}" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <a href="{{URL::to('/admin/student/delete',$s->id)}}" data-toggle="tooltip" data-placement="top" title="Delete">
                                     <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
                                 </a>
                                 
