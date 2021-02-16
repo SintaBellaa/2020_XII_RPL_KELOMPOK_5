@@ -23,7 +23,7 @@
 
           <div class="form-group">
             <label> Point <span style="color: red"> *</span></label>
-            <input type="text" name="point" class="form-control form-control-rounded @error('point') is-invalid @enderror" placeholder="Masukkan Point" value="{{ old('point') }}">
+            <input type="text" name="point" class="form-control form-control-rounded @error('point') is-invalid @enderror" placeholder="Masukkan Point" value="{{ old('point') }}" required>
             @error('point')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
