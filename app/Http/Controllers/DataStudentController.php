@@ -42,7 +42,8 @@ class DataStudentController extends Controller
         ]);
               return redirect('admin/list-student')->withSuccess('Data Berhasil disimpan');
            }
-
+        return $request->input('address'); 
+        
 
             
      }

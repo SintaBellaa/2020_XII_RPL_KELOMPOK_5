@@ -1,4 +1,4 @@
-P@extends('layouts.master-admin')
+@extends('layouts.master-admin')
 <!DOCTYPE html>
 <html>
 <head>

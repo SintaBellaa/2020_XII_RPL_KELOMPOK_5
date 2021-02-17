@@ -47,7 +47,7 @@
 
 					  <div class="form-group">
 					  <label for="input-3">alamat</label>
-					  <textarea type="text" cols="3" rows="5" name="address" required="" class="form-control" id="input-3" placeholder="Enter Adress"></textarea>
+					  <input type="text" cols="3" rows="5" name="address" required="" class="form-control" id="input-3" placeholder="Enter Adress"></input>
 					 </div>
 					
 					 <div class="form-group">

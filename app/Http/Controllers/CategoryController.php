@@ -24,7 +24,7 @@ class CategoryController extends Controller
     public function StoreCategory(Request $request)
      {
            $this->validate($request,[
-            'offense_name'  => 'required',
+            'offense_name'  => 'required|unique:offense_category,offense_name',
             'point'         => 'required|numeric|min:1',
            ]);
 
@@ -50,7 +50,7 @@ class CategoryController extends Controller
      {
        
          $this->validate($request,[
-            'offense_name'       => 'required',
+            'offense_name'       => 'required|unique:offense_category,offense_name',
             'point'              => 'required|numeric|min:1',
            ]);
 

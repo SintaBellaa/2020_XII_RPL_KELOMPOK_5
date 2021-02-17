@@ -5,7 +5,7 @@
       <div class="card">
         <div class="card-header"><i class="fa fa-table"></i>List offense data</div>
         <div class="container" style="margin-left:20px;">
-            <a href="/admin/add-offense" class="btn btn-primary">add</a>
+            <a href="/admin/add-offense" class="btn btn-primary">add offense</a>
         </div>
         
         <div class="card-body">
