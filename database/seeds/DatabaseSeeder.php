@@ -13,10 +13,12 @@ class DatabaseSeeder extends Seeder
     {
          $this->call(RoleSeeder::class);
          $this->call(UserSeeder::class);
+         $this->call(GradeLevelSeeder::class);
+         $this->call(MajorSeeder::class);
+         $this->call(ClassesSeeder::class);
          $this->call(StudentSeeder::class);
          $this->call(OffenseCategorySeeder::class);
          $this->call(OffenseSeeder::class);
-         $this->call(ClassesSeeder::class);
-         $this->call(MajorSeeder::class);
+
     }
 }

@@ -46,7 +46,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::get('admin/list-offense','OffenseController@ListOffense');
 		Route::get('admin/add-offense','OffenseController@AddOffense');
 		Route::post('admin/add-offense','OffenseController@saveAddOffense');
-		Route::post('admin/list-offense' , 'OffenseController@EditListOffense');
+		Route::get('admin/edit-offense/{id}' , 'OffenseController@EditOffense');
+		Route::post('admin/UpdateOffense/{id}','OffenseController@UpdateOffense');
 		
 
 		

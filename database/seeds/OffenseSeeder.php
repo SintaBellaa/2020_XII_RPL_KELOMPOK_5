@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 class OffenseSeeder extends Seeder
 {
     /**
@@ -11,15 +12,22 @@ class OffenseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('offense')->insert([
-            'no_student' => '1',
-            'no_category' => '2',
-            'total_point'=>'5'
+        DB::table('offenses')->insert([
+        	'ofs_student_id' => '1',
+        	'ofs_offense_category_id' => '1',
+            'ofs_date' => Carbon::now()
         ]);
-        DB::table('offense')->insert([
-            'no_student' => '2',
-            'no_category' => '1',
-            'total_point'=>'10'
+
+        DB::table('offenses')->insert([
+        	'ofs_student_id' => '2',
+        	'ofs_offense_category_id' => '3',
+            'ofs_date' => Carbon::now()
+        ]);
+
+        DB::table('offenses')->insert([
+        	'ofs_student_id' => '3',
+        	'ofs_offense_category_id' => '5',
+            'ofs_date' => Carbon::now()
         ]);
     }
 }

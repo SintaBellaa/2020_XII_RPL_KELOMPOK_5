@@ -6,12 +6,11 @@
      <div class="brand-logo">
       <a href="{{URL::to('/admin/dashboard')}}">
        <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
-       <h5 class="logo-text">RockerAdmin</h5>
+       <h5 class="logo-text">Offense System</h5>
      </a>
 	 </div>
 	 <ul class="sidebar-menu do-nicescrol">
-      <li class="sidebar-header">MAIN NAVIGATION</li>
-     
+      
        <li>
         <a href="index.html" class="waves-effect">
           <i class="zmdi zmdi-collection-item"></i> <span>Manage Offense Data Category</span> <i class="fa fa-angle-left pull-right"></i>

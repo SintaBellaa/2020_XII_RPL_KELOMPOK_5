@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMajorTable extends Migration
+class CreateOffenseCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateMajorTable extends Migration
      */
     public function up()
     {
-        Schema::create('major', function (Blueprint $table) {
-            $table->BigIncrements('id_major');
-            $table->String('major_name');
+        Schema::create('offense_categories', function (Blueprint $table) {
+            $table->bigIncrements('ofc_id');
+            $table->string('ofc_name');
+            $table->integer('ofc_point');
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 
@@ -27,6 +29,6 @@ class CreateMajorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('major');
+        Schema::dropIfExists('offense_categories');
     }
 }

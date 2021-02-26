@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Offense;
 use App\Student;
 use App\Category;
@@ -26,15 +28,29 @@ class OffenseController extends Controller
     public function SaveAddOffense(Request $request)
     {
         $cat = Category::whereId($request->input('offense_category_id'))->first();
-        $create = new Offense;
-        $create->no_student = $request->input('nama_siswa_id');
+        $create              = new Offense;
+        $create->no_student  = $request->input('nama_siswa_id');
         $create->no_category = $cat->id;
         $create->total_point = $cat->point;
         $create->save();
         return redirect('/admin/list-offense')->withSuccess($request->input('nama_siswa').' Berhasil Ditambahkan');
     }
-      public function EditListOffense()
+      public function EditOffense($id)
     {
-        return back()->withSuccess('Edit Berhasil');
+      $offense = offense::join('students','students.id', '=', 'offense.no_student')
+      ->join('offense_category', 'offense_category.id', '=', 'offense.no_category')->where('offense.id', $id)->get();
+       return view('offense.edit-offense',['offense'=>$offense]);
     }
+
+     public function UpdateOffense(Request $request,$id)
+     {  
+       //dd($request);
+         $data = Offense::whereId($id)->first();
+         $data->no_student = $request->input('no_student');
+         $data->no_category  = $request->input('no_category');
+        $data->save();
+         return redirect('/admin/list-offense')->withSuccess('Edit Berhasil');
+     }
+
 }
+

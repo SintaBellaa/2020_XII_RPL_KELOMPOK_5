@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOffenseCategoryTable extends Migration
+class CreateGradeLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateOffenseCategoryTable extends Migration
      */
     public function up()
     {
-      Schema::create('offense_category', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('offense_name');
-            $table->integer('point');
+        Schema::create('grade_levels', function (Blueprint $table) {
+            $table->bigIncrements('grd_id');
+            $table->string('grd_name');
             $table->timestamps();
-            $table->softdeletes();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateOffenseCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offense_category');
+        Schema::dropIfExists('grade_levels');
     }
 }

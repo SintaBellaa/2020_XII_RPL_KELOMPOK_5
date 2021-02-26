@@ -43,8 +43,6 @@ class DataStudentController extends Controller
               return redirect('admin/list-student')->withSuccess('Data Berhasil disimpan');
            }
         return $request->input('address'); 
-        
-
             
      }
 
@@ -71,7 +69,7 @@ class DataStudentController extends Controller
     public function DeleteStudent($id)
     {
         Student::whereId($id)->delete();
-        //Offense::whereNoStudent($id)->delete();
+       //Offense::whereNoStudent($id)->delete();
         return back()->withSuccess('Delete Berhasil');
     }
 }

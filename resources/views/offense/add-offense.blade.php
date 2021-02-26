@@ -12,7 +12,7 @@
 				    <form method="post">
               @csrf
 					 <div class="form-group">
-                      <label>Nama  / Nim</label>
+                      <label>Nama  / Nis</label>
                       <select class="form-control single-select" name="nama_siswa_id" required="">
                           <option value="">Pilih Siswa</option>
                           @foreach($student as $data)

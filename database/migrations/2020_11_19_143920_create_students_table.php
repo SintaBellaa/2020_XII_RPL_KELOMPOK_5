@@ -14,13 +14,17 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nis');
-            $table->string('name');
-            $table->string('class');
-            $table->string('gender');
-            $table->string('address');
+            $table->bigIncrements('stu_id');
+            $table->string('stu_nis');
+            $table->foreignId('stu_user_id');
+            $table->foreign('stu_user_id')->references('usr_id')->on('users');
+            $table->foreignId('stu_class_id');
+            $table->foreign('stu_class_id')->references('cls_id')->on('class');
+            $table->string('stu_gender');
+            $table->string('stu_address');
+            $table->bigInteger('stu_point')->default('0');
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 

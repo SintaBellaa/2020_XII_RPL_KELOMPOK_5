@@ -23,13 +23,23 @@
            </div>
 
             <div class="form-group">
-            <label for="input-2">Class</label>
-            <input value="{{$student->class}}" type="text" name="class" class="form-control" id="input-3" placeholder="Enter class">
+            <label for="input-3">kelas</label>
+            <SELECT type="text" class="form-control" name="class" required="">
+              <option value="{{$student->class}}"></option>
+              <option>X RPL</option>
+              <option>X MM</option>
+              <option>XI RPL</option>
+              <option>XI MM</option>
+              <option>XII RPL 1</option>
+              <option>XII RPL 2</option>
+              <option>XII MM</option>
+              
+            </SELECT>
            </div>
 
-             <div class="form-group">
-            <label for="input-2">Gender</label>
-            <input value="{{$student->gender}}" type="text" name="gender" class="form-control" id="input-3" placeholder="Enter gender">
+           <div class="form-group">
+            <label for="input-2">Jenis Kelamin</label>
+            <input value="{{$student->gender}}" type="text" name="adress" class="form-control" id="input-3" placeholder="Enter gender">
            </div>
 
 
