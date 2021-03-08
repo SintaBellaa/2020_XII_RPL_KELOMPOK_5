@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Student;
 use App\Offense;
@@ -13,7 +13,7 @@ use App\ClassModel;
 
 class DataStudentController extends Controller
 {
- 
+
     function class()
     {
         $class = ClassModel::join('majors', 'class.cls_major_id', '=', 'majors.mjr_id')
@@ -31,7 +31,7 @@ class DataStudentController extends Controller
 
     public function IndexStudent()
     {
-    
+
         $data['student'] = User::join('students', 'users.usr_id', '=', 'students.stu_user_id')
         ->join('class', 'students.stu_class_id', '=', 'class.cls_id')
         ->join('majors', 'class.cls_major_id', '=', 'majors.mjr_id')
@@ -44,9 +44,9 @@ class DataStudentController extends Controller
             'majors.*',
             'grade_levels.*'
         )->get();
-       
 
-        
+
+
         return view('admin-student.list-student', $data);
     }
 
@@ -58,7 +58,7 @@ class DataStudentController extends Controller
         return view('admin-student.add-student', $data);
     }
 
-   
+
      public function StoreStudent(Request $request)
      {
 
@@ -69,7 +69,7 @@ class DataStudentController extends Controller
         $user->usr_phone             = $request->usr_phone;
         $user->usr_password          = $request->usr_password;
         $user->usr_is_active         = 1;
-        $user->usr_email_verified_at = now();     
+        $user->usr_email_verified_at = now();
         $user->usr_created_by        = Auth()->user()->usr_id;
         $user->save();
 
@@ -83,9 +83,9 @@ class DataStudentController extends Controller
             $student->save();
 
             return redirect('/admin/list-student')->withSuccess('Tambah Data Berhasil');
-         } else { 
+         } else {
             return redirect('/admin/list-student')->withWarning('Tambah Data Gagal, Silahkan Coba Lagi !');
-        }   
+        }
      }
 
       public function EditStudent($stu_id)
@@ -99,24 +99,33 @@ class DataStudentController extends Controller
 
      public function UpdateStudent(Request $request, $stu_id)
      {
-        $update = DB::table('students')->where('stu_id', $stu_id)->update([
-                'stu_nis'  => $request->stu_nis,
-                'stu_user_id' =>$request->usr_id,
-                'stu_class_id'  => $request->cls_id,
-                'stu_gender' => $request->stu_gender,
-                'stu_address' => $request->stu_address
+        $update = Student::where('stu_id', $stu_id)->first();
+        $update->stu_nis = $request->stu_nis;
+        $update->stu_class_id  = $request->cls_id;
+        $update->stu_gender = $request->stu_gender;
+        $update->stu_address = $request->stu_address;
+        $update->save();
+
+        User::whereUsrId($update->stu_user_id)->update([
+            'usr_name' => $request->usr_name,
         ]);
+
         if ($update) {
             return redirect('admin/list-student')->withSuccess('Edit Berhasil');
         } else {
              return redirect('/admin/list-student')->withWarning('Ubah Data Gagal, Silahkan Coba Lagi !');
         }
-        
+
      }
-    
+
     public function DeleteStudent($stu_id)
     {
-        Student::whereStuId($stu_id)->delete();
+
+        $std = Student::whereStuId($stu_id)->first();
+        User::whereUsrId($std->stu_user_id)->delete();
+        Student::whereStuId($std->stu_id)->delete();
+
+
        //Offense::whereNoStudent($id)->delete();
         return back()->withSuccess('Delete Berhasil');
     }

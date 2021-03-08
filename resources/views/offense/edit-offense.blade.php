@@ -12,14 +12,14 @@
            @foreach($offense as $data)
             <form action="{{URL::to('admin/UpdateOffense/'.$data->ofs_id)}}" method="post">
               @csrf
-              
+
                  <div class="form-group">
                     <label for="input-3">Name</label>
-                    <select type="text" class="form-control single-select" name="ofs_student_id"  required="">
+                    <select type="text" class="form-control single-select" name="userId"  required="">
                       <option value="" selected disabled="">Pilih siswa</option>
                       @if(!empty($student))
                       @foreach($student as $data)
-                      <option value="{{ $data->ofs_student_id}}">{{ $data->usr_name}}</option>
+                      <option value="{{ $data->stu_id}}">{{ $data->usr_name}}</option>
                       @endforeach
                       @endif
                     </select>
@@ -27,12 +27,19 @@
 
                  <div class="form-group">
                     <label for="input-1" >Pelanggaran</label>
-                    <input value="{{$data->ofc_name}}" type="text" name="ofs_offense_category_id" class="form-control" id="input-1" placeholder="Enter offense">
+                     <select type="text" class="form-control single-select" name="catId"  required="">
+                         <option value="" selected disabled="">Pilih siswa</option>
+                         @if(!empty($offense_cat))
+                             @foreach($offense_cat as $data)
+                                 <option value="{{$data->ofc_id}}">{{$data->ofc_name . '  (Point ' .  $data->ofc_point . ' )'}}</option>
+                             @endforeach
+                         @endif
+                     </select>
                  </div>
 
 
 
-                 
+
              @endforeach
              <div class="form-group">
               <button type="submit" class="btn btn-primary shadow-primary px-5"><i></i>submit</button>
