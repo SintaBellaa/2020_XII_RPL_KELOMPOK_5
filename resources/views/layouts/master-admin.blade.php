@@ -2,6 +2,8 @@
 <html>
 
 	@include('layouts.head')
+
+  @yield('css')
 <body>
 	@include('layouts.sidebar')
 
@@ -19,17 +21,14 @@
 
 
  	<!--start footer-->
- 	<footer class="footer">
-      <div class="container">
-        <div class="text-center">
-          SISTEM PELANGGARAN SMK MAHAPUTRA
-        </div>
-      </div>
-    </footer>
+
     <!--end footer-->
 
    </div>
+
   @include('sweetalert::alert')
   @include('layouts.js')
+  
+   @yield('js')
 </body>
 </html>

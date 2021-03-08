@@ -39,6 +39,41 @@ class UserSeeder extends Seeder
 
         $siswa->assignRole('student');
 
+        $a = User::create([
+            'usr_name' => 'Iis',
+            'usr_email' => 'iis@gmail.com',
+            'usr_phone' => '08965625149',
+            'usr_password' => Hash::make('student1'),
+            'usr_email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'usr_verification_token' => str_replace('/', '', Hash::make(Str::random(12))),
+            'usr_is_active' => true,
+        ]);
+
+        $a->assignRole('student');
+
+        $b = User::create([
+            'usr_name' => 'Desma',
+            'usr_email' => 'desma@gmail.com',
+            'usr_phone' => '08267091743',
+            'usr_password' => Hash::make('student1'),
+            'usr_email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'usr_verification_token' => str_replace('/', '', Hash::make(Str::random(12))),
+            'usr_is_active' => true,
+        ]);
+
+        $b->assignRole('student');
+
+        $c = User::create([
+            'usr_name' => 'Sinta',
+            'usr_email' => 'sinta@gmail.com',
+            'usr_phone' => '081135243979',
+            'usr_password' => Hash::make('student1'),
+            'usr_email_verified_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'usr_verification_token' => str_replace('/', '', Hash::make(Str::random(12))),
+            'usr_is_active' => true,
+        ]);
+
+        $c->assignRole('student');
        
     }
 }

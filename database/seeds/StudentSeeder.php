@@ -12,48 +12,32 @@ class StudentSeeder extends Seeder
     public function run()
     {
         DB::table('students')->insert([
-        	'stu_nis' => '1819.10.089',
-        	'stu_user_id' => '2',
-        	'stu_class_id' => '1',
-        	'stu_gender' => 'laki-laki',
-        	'stu_address' => 'Rancamanyar'
-
-        ]);
-
-         DB::table('students')->insert([
-        	'stu_nis' => '1819.10.056',
-        	'stu_user_id' => '1',
-        	'stu_class_id' => '1',
+        	'stu_nis' => '1819.10.041',
+        	'stu_user_id' => '3',
+        	'stu_class_id' => '7',
         	'stu_gender' => 'perempuan',
-        	'stu_address' => 'Bojong'
+        	'stu_address' => 'kp.ciborerang'
 
         ]);
 
-          DB::table('students')->insert([
-        	'stu_nis' => '1819.10.009',
-        	'stu_user_id' => '1',
-        	'stu_class_id' => '2',
-        	'stu_gender' => 'laki-laki',
-        	'stu_address' => 'Bandung'
+        DB::table('students')->insert([
+            'stu_nis' => '1819.10.025',
+            'stu_user_id' => '2',
+            'stu_class_id' => '7',
+            'stu_gender' => 'perempuan',
+            'stu_address' => 'kp.cembul'
 
         ]);
 
-          DB::table('students')->insert([
-        	'stu_nis' => '1819.10.034',
-        	'stu_user_id' => '1',
-        	'stu_class_id' => '2',
-        	'stu_gender' => 'laki-laki',
-        	'stu_address' => 'Cembul'
+        DB::table('students')->insert([
+            'stu_nis' => '1819.10.083',
+            'stu_user_id' => '1',
+            'stu_class_id' => '7',
+            'stu_gender' => 'perempuan',
+            'stu_address' => 'kp.bojong waru'
 
         ]);
 
-          DB::table('students')->insert([
-        	'stu_nis' => '1819.10.032',
-        	'stu_user_id' => '1',
-        	'stu_class_id' => '2',
-        	'stu_gender' => 'perempuan',
-        	'stu_address' => 'kopo'
-
-        ]);
+       
     }
 }

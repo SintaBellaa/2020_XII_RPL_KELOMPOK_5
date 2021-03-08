@@ -13,8 +13,8 @@
 				    	@csrf
 					 <div class="form-group">
 					  <label> offense name <span style="color: red"> *</span></label>
-					  <input type="text" name="offense_name" class="form-control form-control-rounded @error('offense_name') is-invalid @enderror" placeholder="Masukkan Nama Pelanggaran" value="" required>
-					  @error('offense_name')
+					  <input type="text" name="ofc_name" class="form-control form-control-rounded @error('ofc_name') is-invalid @enderror" placeholder="Masukkan Nama Pelanggaran" value="" required>
+					  @error('ofc_name')
 					  <span class="invalid-feedback" role="alert">
 					  	<strong>{{ $message }}</strong>
 					  </span>
@@ -23,8 +23,8 @@
 
 					 <div class="form-group">
 					  <label> point <span style="color: red"> </span></label>
-					  <input type="text" name="point" class="form-control form-control-rounded @error('point') is-invalid @enderror" placeholder="Masukkan Point" value="" required>
-					  @error('point')
+					  <input type="text" name="ofc_point" class="form-control form-control-rounded @error('ofc_point') is-invalid @enderror" placeholder="Masukkan Point" value="" required>
+					  @error('ofc_spoint')
 					  <span class="invalid-feedback" role="alert">
 					  	<strong>{{ $message }}</strong>
 					  </span>

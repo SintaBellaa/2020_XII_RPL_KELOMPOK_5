@@ -9,46 +9,47 @@
   <div class="card-body">
            <div class="card-title">Form Edit Student</div>
            <hr>
-            <form action="{{URL::to('admin/UpdateStudent/'.$student->id)}}" method="post">
+            <form action="{{URL::to('admin/UpdateStudent/'.$student->stu_id)}}" method="post">
               @csrf
            <div class="form-group">
             <label for="input-1" >Nis</label>
-            <input value="{{$student->nis}}" type="text" name="nis" class="form-control" id="input-1" placeholder="Enter nis">
-           </div>
-
-
-           <div class="form-group">
-            <label for="input-2">Name</label>
-            <input value="{{$student->name}}" type="text" name="name" class="form-control" id="input-3" placeholder="Enter name">
-           </div>
-
-            <div class="form-group">
-            <label for="input-3">kelas</label>
-            <SELECT type="text" class="form-control" name="class" required="">
-              <option value="{{$student->class}}"></option>
-              <option>X RPL</option>
-              <option>X MM</option>
-              <option>XI RPL</option>
-              <option>XI MM</option>
-              <option>XII RPL 1</option>
-              <option>XII RPL 2</option>
-              <option>XII MM</option>
-              
-            </SELECT>
+            <input value="{{$student->stu_nis}}" required="" type="text" name="stu_nis" class="form-control" id="input-1" placeholder="Enter nis">
            </div>
 
            <div class="form-group">
-            <label for="input-2">Jenis Kelamin</label>
-            <input value="{{$student->gender}}" type="text" name="adress" class="form-control" id="input-3" placeholder="Enter gender">
+                <label>Nama</label>
+                <input type="text" required="" name="usr_name" value="{{$student->usr_name}}" class="form-control" id="input-1" placeholder="">
+            </div>
+
+
+           <div class="form-group">
+          <label for="input-3">kelas</label>
+          <select type="text" class="form-control" name="cls_id" id="cls_id" required="">
+            <option value="{{$student->stu_class_id}}" disabled="">Pilih Salah Satu</option>
+            @if(!empty($class))
+            @foreach($class as $data)
+            <option value="{{ $data->id_class }}" {{ ($data->id_class == $student->stu_class_id) ? 'selected' : '' }} >{{ $data->grd_name }} - {{ $data->mjr_name }} - {{$data->cls_number}}</option>
+            @endforeach
+            @endif
+          </select>
+         </div>
+
+           <div class="form-group">
+            <label for="input-3">jenis kelamin</label><br>
+           <select type="text" class="form-control" name="stu_gender" required="" value="{{$student->stu_gender}}">
+            <option value="" selected disabled="">Pilih Salah Satu</option>
+              <option value="Laki-Laki" {{ ($student->stu_gender == 'Laki-Laki') ? 'selected' : '' }}>Laki-Laki</option>
+              <option value="Perempuan" {{ ($student->stu_gender == 'Perempuan') ? 'selected' : '' }}>Perempuan</option>
+            </select>
            </div>
 
 
             <div class="form-group">
             <label for="input-2">Address</label>
-            <input value="{{$student->address}}" type="text" name="adress" class="form-control" id="input-3" placeholder="Enter address">
+            <input value="{{$student->stu_address}}" type="text" name="stu_address" class="form-control" id="input-3" placeholder="Enter address">
            </div>
 
-
+           
            
            <div class="form-group">
             <button type="submit" class="btn btn-primary shadow-primary px-5"><i></i>submit</button>

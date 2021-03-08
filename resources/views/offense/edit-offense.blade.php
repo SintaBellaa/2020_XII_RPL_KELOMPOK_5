@@ -10,18 +10,27 @@
            <div class="card-title">Form Edit Offense</div>
            <hr>
            @foreach($offense as $data)
-            <form action="{{URL::to('admin/UpdateOffense/'. $data->id)}}" method="post">
+            <form action="{{URL::to('admin/UpdateOffense/'.$data->ofs_id)}}" method="post">
               @csrf
               
                  <div class="form-group">
-                    <label for="input-1" >Nama Siswa</label>
-                    <input value="{{$data->name}}" type="text" name="no_student" class="form-control" id="input-1" placeholder="Enter name">
-                 </div>
-                 
+                    <label for="input-3">Name</label>
+                    <select type="text" class="form-control single-select" name="ofs_student_id"  required="">
+                      <option value="" selected disabled="">Pilih siswa</option>
+                      @if(!empty($student))
+                      @foreach($student as $data)
+                      <option value="{{ $data->ofs_student_id}}">{{ $data->usr_name}}</option>
+                      @endforeach
+                      @endif
+                    </select>
+              </div>
+
                  <div class="form-group">
                     <label for="input-1" >Pelanggaran</label>
-                    <input value="{{$data->offense_name}}" type="text" name="no_category" class="form-control" id="input-1" placeholder="Enter offense">
+                    <input value="{{$data->ofc_name}}" type="text" name="ofs_offense_category_id" class="form-control" id="input-1" placeholder="Enter offense">
                  </div>
+
+
 
                  
              @endforeach

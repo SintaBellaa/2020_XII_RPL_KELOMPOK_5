@@ -23,19 +23,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                       @foreach ($category as $id => $c)
+                       @foreach ($category as $ofc_id => $c)
                        <tr>
-                           <td>{{ $id+1 }}</td>
-                           <td>{{ $c->offense_name }}</td>
-                           <td>{{ $c->point }}</td>
+                           <td>{{ $ofc_id+1 }}</td>
+                           <td>{{ $c->ofc_name }}</td>
+                           <td>{{ $c->ofc_point }}</td>
 
 
                               <td class="text-center">
-                                <a href="{{URL::to('/admin/edit-category/'.$c->id)}}">
+                                <a href="{{URL::to('/admin/edit-category/'.$c->ofc_id)}}">
                                     <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
                                 </a> &nbsp
 
-                                <a href="{{URL::to('/admin/destroy-category/'.$c->id)}}" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <a href="{{URL::to('/admin/destroy-category/'.$c->ofc_id)}}" data-toggle="tooltip" data-placement="top" title="Delete">
                                     <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
                                 </a>
                                 

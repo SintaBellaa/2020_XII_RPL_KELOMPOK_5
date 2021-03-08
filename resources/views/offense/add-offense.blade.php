@@ -11,30 +11,31 @@
 				   <hr>
 				    <form method="post">
               @csrf
-					 <div class="form-group">
-                      <label>Nama  / Nis</label>
-                      <select class="form-control single-select" name="nama_siswa_id" required="">
-                          <option value="">Pilih Siswa</option>
-                          @foreach($student as $data)
+					   <div class="form-group">
+                    <label for="input-3">Name</label>
+                    <select type="text" class="form-control single-select" name="nama_siswa_id"  required="">
+                      <option value="" selected disabled="">Pilih siswa</option>
+                      @if(!empty($student))
+                      @foreach($student as $data)
+                      <option value="{{ $data->id }}">{{ $data->usr_name}}</option>
+                      @endforeach
+                      @endif
+                    </select>
+              </div>
 
-                          <option value="{{$data->id}}">{{$data->name}}</option>
+                     
 
-                          @endforeach
-                          
-                      </select>
-                    </div>
-
-                     <div class="form-group">
-                      <label>Pelanggaran</label>
-                      <select class="form-control single-select" name="offense_category_id" required="">
-                           <option value="">Pilih Pelanggaran</option>
-                          @foreach($offense_category as $data)
-
-                          <option value="{{$data->id}}">{{$data->offense_name}} - point {{$data->point}}</option>
-
-                          @endforeach
-                      </select>
-                    </div>
+                    <div class="form-group">
+                    <label for="input-3">Pelanggaran</label>
+                    <select type="text" class="form-control single-select" name="offense_category_id"  required="">
+                      <option value="" selected disabled="">Pilih Pelanggaran</option>
+                      @if(!empty($offense_category))
+                      @foreach($offense_category as $data)
+                      <option value="{{ $data->id }}">{{ $data->ofc_name }} - point {{$data->ofc_point}}</option>
+                      @endforeach
+                      @endif
+                    </select>
+                   </div>
 
                     
 

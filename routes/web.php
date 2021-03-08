@@ -42,12 +42,13 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 		Route::get('admin/dashboard','AdminController@index');
 		
-		//ini untuk fitur pelanggaran
+		//ini untuk fitur pelanggaran{offenses}
 		Route::get('admin/list-offense','OffenseController@ListOffense');
 		Route::get('admin/add-offense','OffenseController@AddOffense');
 		Route::post('admin/add-offense','OffenseController@saveAddOffense');
-		Route::get('admin/edit-offense/{id}' , 'OffenseController@EditOffense');
-		Route::post('admin/UpdateOffense/{id}','OffenseController@UpdateOffense');
+		Route::get('admin/edit-offense/{ofs_id}' , 'OffenseController@EditOffense');
+		Route::post('admin/UpdateOffense/{ofs_id}','OffenseController@UpdateOffense');
+		
 		
 
 		
@@ -60,17 +61,31 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::post('admin/UpdateCategory/{id}' , 'CategoryController@UpdateCategory');
 		Route::get('/admin/destroy-category/{id}' , 'CategoryController@DestroyCategory');
 
-
 		
 		//ini untuk fitur kelola siswa
 		Route::get('admin/list-student','DataStudentController@IndexStudent');
 		Route::get('admin/add-student','DataStudentController@AddStudent');
 		Route::post('admin/StoreStudent' , 'DataStudentController@StoreStudent');
 
-		Route::get('/admin/edit-student/{id}','DataStudentController@EditStudent');
-		Route::post('admin/UpdateStudent/{id}' , 'DataStudentController@UpdateStudent');
-		Route::get('/admin/student/delete/{id}' , 'DataStudentController@DeleteStudent');
+		Route::get('/admin/edit-student/{stu_id}','DataStudentController@EditStudent');
+		Route::post('admin/UpdateStudent/{stu_id}' , 'DataStudentController@UpdateStudent');
+		Route::get('/admin/student/delete/{stu_id}' , 'DataStudentController@DeleteStudent');
+
+		//route web untuk kelola major
+		Route::get('/major/list-major','MajorController@IndexMajor');
+		Route::get('/major/AddMajor','MajorController@AddMajor');
+		Route::post('/major/StoreMajor','MajorController@StoreMajor');
+		Route::get('/major/EditMajor/{mjr_id}','MajorController@EditMajor');
+		Route::post('/major/UpdateMajor/{mjr_id}','MajorController@UpdateMajor');
+
+		//route web untuk kelola class
+		Route::get('/classes/list-class','DataClassController@index');
+		Route::get('/classes/AddClass','DataClassController@AddClass');
+		Route::post('/classes/StoreClass','MajorController@StoreMajor');
+		Route::get('/classes/EditClass/{cls_id}','MajorController@EditMajor');
+		Route::post('/classes/UpdateClass/{cls_id}','MajorController@UpdateMajor');
 		
+
 	});
 
 // ini untuk student

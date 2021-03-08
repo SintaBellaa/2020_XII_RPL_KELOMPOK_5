@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
-	use SoftDeletes;
-	
-    protected $dates = ['deleted_at'];
+use SoftDeletes;
+
     protected  $table = 'students';
-    protected $guarded = [];
-
-
+    protected $primaryKey = 'stu_id';
+    protected $guarded = [''];
+    protected $dates = ['deleted_at'];
 }

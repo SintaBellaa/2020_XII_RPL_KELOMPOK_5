@@ -9,12 +9,12 @@
   <div class="card-body">
            <div class="card-title">Form Edit Category</div>
            <hr>
-            <form action="{{URL::to('admin/UpdateCategory/'.$category->id)}}" method="post">
+            <form action="{{URL::to('admin/UpdateCategory/'.$category->ofc_id)}}" method="post">
               @csrf
            <div class="form-group">
             <label> offense name <span style="color: red"> *</span></label>
-            <input type="text" name="offense_name" class="form-control form-control-rounded @error('offense_name') is-invalid @enderror" placeholder="Masukkan Nama Pelanggaran" value="{{$category->offense_name}}">
-            @error('offense_name')
+            <input type="text" name="ofc_name" class="form-control form-control-rounded @error('ofc_name') is-invalid @enderror" placeholder="Masukkan Nama Pelanggaran" value="{{$category->ofc_name}}">
+            @error('ofc_name')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
             </span>
@@ -22,9 +22,9 @@
            </div>
 
           <div class="form-group">
-            <label> Point <span style="color: red"> *</span></label>
-            <input type="text" name="point" class="form-control form-control-rounded @error('point') is-invalid @enderror" placeholder="Masukkan Point" value="{{$category->point}}" required>
-            @error('point')
+            <label> ofc_Point <span style="color: red"> *</span></label>
+            <input type="text" name="ofc_point" class="form-control form-control-rounded @error('ofc_point') is-invalid @enderror" placeholder="Masukkan Point" value="{{$category->ofc_point}}" required>
+            @error('ofc_point')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
             </span>

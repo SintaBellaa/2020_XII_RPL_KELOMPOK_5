@@ -12,38 +12,28 @@ class OffenseCategorySeeder extends Seeder
     public function run()
     {
         DB::table('offense_categories')->insert([
-        	'ofc_name' => 'tidak membawa al-quran',
-        	'ofc_point' => '2'
-        ]);
-
-        DB::table('offense_categories')->insert([
-        	'ofc_name' => 'memakai make up yang berlebihan',
-        	'ofc_point' => '3'
-        ]);
-
-        DB::table('offense_categories')->insert([
-        	'ofc_name' => 'rambut yang di warnai',
+        	'ofc_name' => 'mewarnai Rambut',
         	'ofc_point' => '5'
         ]);
 
-        DB::table('offense_categories')->insert([
-        	'ofc_name' => 'tidak memakai kerudung kec non muslim',
-        	'ofc_point' => '10'
+         DB::table('offense_categories')->insert([
+            'ofc_name' => 'Tidak Memakai atribut sekolah',
+            'ofc_point' => '2'
         ]);
 
+          DB::table('offense_categories')->insert([
+            'ofc_name' => 'memakai Knalpot Bising',
+            'ofc_point' => '5'
+        ]);
+       
         DB::table('offense_categories')->insert([
-        	'ofc_name' => 'bolos pelajaran',
-        	'ofc_point' => '20'
+            'ofc_name' => 'makan dan minum sambil berdiri',
+            'ofc_point' => '5'
         ]);
 
-        DB::table('offense_categories')->insert([
-        	'ofc_name' => 'membawa senjata tajam',
-        	'ofc_point' => '40'
-        ]);
-
-        DB::table('offense_categories')->insert([
-        	'ofc_name' => 'melakukan tindakan asusila dan pornograpi',
-        	'ofc_point' => '100'
+         DB::table('offense_categories')->insert([
+            'ofc_name' => 'merokok',
+            'ofc_point' => '40'
         ]);
     }
 }

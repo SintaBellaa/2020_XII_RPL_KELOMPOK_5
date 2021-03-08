@@ -24,45 +24,43 @@ class CategoryController extends Controller
     public function StoreCategory(Request $request)
      {
            $this->validate($request,[
-            'offense_name'  => 'required|unique:offense_category,offense_name',
-            'point'         => 'required|numeric|min:1',
+            'ofc_name'  => 'required|unique:offense_categories,ofc_name',
+            'ofc_point'         => 'required|numeric|min:1',
            ]);
 
            $category = new Category;
-           $category->offense_name   = $request->offense_name;
-           $category->point          = $request->point;
+           $category->ofc_name   = $request->ofc_name;
+           $category->ofc_point  = $request->ofc_point;
            $category->save();
 
         return redirect('admin/list-category')->withSuccess('Data Berhasil disimpan');
      }
 
     
-    public function EditCategory($id)
+    public function EditCategory($ofc_id)
 
      {
-        $category = DB::table('offense_category')->where('id',$id)->first();
+        $category = DB::table('offense_categories')->where('ofc_id',$ofc_id)->first();
         return view('category.edit-category',['category' => $category]);
-
-
      }
 
      public function UpdateCategory(Request $request,$id)
      {
        
          $this->validate($request,[
-            'offense_name'       => 'required|unique:offense_category,offense_name',
-            'point'              => 'required|numeric|min:1',
+            'ofc_name'       => 'required|unique:offense_categories,ofc_name',
+            'ofc_point'     => 'required|numeric|min:1',
            ]);
 
            $category = new Category;
-           $category->offense_name = $request->offense_name;
+           $category->ofc_name = $request->ofc_name;
 
         return redirect('admin/list-category')->withSuccess('Data Berhasil disimpan');
      }
  
-      public function DestroyCategory($id)
+      public function DestroyCategory($ofc_id)
     {
-      Category::whereId($id)->delete();
+      Category::whereOfcId($ofc_id)->delete();
         return back()->withToastSuccess('Berhasil dihapus');
 
 
