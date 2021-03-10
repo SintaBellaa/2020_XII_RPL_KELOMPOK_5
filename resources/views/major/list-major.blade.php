@@ -30,6 +30,11 @@
                                 <a href="{{URL::to('/major/EditMajor/'.$m->mjr_id)}}">
                                     <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
                                 </a>
+
+                                  <a href="{{URL::to('/major/delete/'.$m->mjr_id)}}">
+                                    <i data-toggle="tooltip" data-placement="top" title="delete" aria-hidden="true" class="fa fa-trash fa-lg"></i>
+                                </a>
+                                
                             </td> 
                       </tr>
                     @endforeach

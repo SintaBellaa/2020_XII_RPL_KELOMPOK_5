@@ -31,7 +31,16 @@ class StudentSeeder extends Seeder
 
         DB::table('students')->insert([
             'stu_nis' => '1819.10.083',
-            'stu_user_id' => '1',
+            'stu_user_id' => '4',
+            'stu_class_id' => '7',
+            'stu_gender' => 'perempuan',
+            'stu_address' => 'kp.bojong waru'
+
+        ]);
+
+        DB::table('students')->insert([
+            'stu_nis' => '1819.10.083',
+            'stu_user_id' => '5',
             'stu_class_id' => '7',
             'stu_gender' => 'perempuan',
             'stu_address' => 'kp.bojong waru'

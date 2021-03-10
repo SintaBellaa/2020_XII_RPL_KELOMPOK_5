@@ -26,8 +26,7 @@ class MajorController extends Controller
     	$major->mjr_name   = $request->mjr_name;
     	$major->save();
 
-    	return redirect('major/list-major')->withSuccess('tambah Berhasil');
-    	
+    	return redirect('major/list-major')->withSuccess('tambah Berhasil');	
     }
 
      public function EditMajor($mjr_id)
@@ -44,5 +43,10 @@ class MajorController extends Controller
         return redirect('major/list-major')->withSuccess('Edit Berhasil');
      }
 
+     public function DeleteMajor($mjr_id)
+     {
+        Major::whereMjrId($mjr_id)->delete();
+        return back()->withToastSuccess('Berhasil dihapus');
+     }
 
 }

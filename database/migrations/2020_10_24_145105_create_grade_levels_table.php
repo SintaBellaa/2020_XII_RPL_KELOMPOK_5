@@ -16,7 +16,9 @@ class CreateGradeLevelsTable extends Migration
         Schema::create('grade_levels', function (Blueprint $table) {
             $table->bigIncrements('grd_id');
             $table->string('grd_name');
+
             $table->timestamps();
+             $table->softdeletes();
         });
     }
 

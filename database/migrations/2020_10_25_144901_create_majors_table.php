@@ -16,7 +16,9 @@ class CreateMajorsTable extends Migration
         Schema::create('majors', function (Blueprint $table) {
             $table->bigIncrements('mjr_id');
             $table->string('mjr_name');
+            
             $table->timestamps();
+             $table->softdeletes();
         });
     }
 

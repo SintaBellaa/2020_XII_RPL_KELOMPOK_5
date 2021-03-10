@@ -21,8 +21,17 @@ class DataClassController extends Controller
     public function AddClass()
     {
    	return view('ClassView.add-class');
-	}
+	 }
 
+   public function StoreClass()
+   {
+
+   }
+
+   public function EditClass()
+   {
+    
+   }
 	
   
 

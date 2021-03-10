@@ -22,6 +22,7 @@ class CreateClassTable extends Migration
             $table->integer('cls_number');
 
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 

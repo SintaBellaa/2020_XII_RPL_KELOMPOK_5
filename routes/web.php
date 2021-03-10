@@ -50,26 +50,23 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::post('admin/UpdateOffense/{ofs_id}','OffenseController@UpdateOffense');
 		
 		
-
-		
 		//ini untuk fitur kategori
 		Route::get('admin/list-category' , 'CategoryController@index');
 		Route::get('admin/add-category','CategoryController@AddCategory');
 		Route::post('admin/StoreCategory' , 'CategoryController@StoreCategory');
-
 		Route::get('/admin/edit-category/{id}' , 'CategoryController@EditCategory');
 		Route::post('admin/UpdateCategory/{id}' , 'CategoryController@UpdateCategory');
-		Route::get('/admin/destroy-category/{id}' , 'CategoryController@DestroyCategory');
+		Route::get('/admin/destroy-category/{id}' , 'CategoryController@DestroyCategory');//function delete
 
 		
 		//ini untuk fitur kelola siswa
 		Route::get('admin/list-student','DataStudentController@IndexStudent');
 		Route::get('admin/add-student','DataStudentController@AddStudent');
 		Route::post('admin/StoreStudent' , 'DataStudentController@StoreStudent');
-
 		Route::get('/admin/edit-student/{stu_id}','DataStudentController@EditStudent');
 		Route::post('admin/UpdateStudent/{stu_id}' , 'DataStudentController@UpdateStudent');
 		Route::get('/admin/student/delete/{stu_id}' , 'DataStudentController@DeleteStudent');
+
 
 		//route web untuk kelola major
 		Route::get('/major/list-major','MajorController@IndexMajor');
@@ -77,6 +74,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::post('/major/StoreMajor','MajorController@StoreMajor');
 		Route::get('/major/EditMajor/{mjr_id}','MajorController@EditMajor');
 		Route::post('/major/UpdateMajor/{mjr_id}','MajorController@UpdateMajor');
+		Route::get('/major/delete/{mjr_id}','MajorController@DeleteMajor');
+
 
 		//route web untuk kelola class
 		Route::get('/classes/list-class','DataClassController@index');
