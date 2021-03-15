@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                       @foreach ($category as $ofc_id => $c)
+                       @foreach ($offense_category as $ofc_id => $c)
                        <tr>
                            <td>{{ $ofc_id+1 }}</td>
                            <td>{{ $c->ofc_name }}</td>

@@ -80,9 +80,9 @@ Route::group(['middleware' => ['role:admin']], function () {
 		//route web untuk kelola class
 		Route::get('/classes/list-class','DataClassController@index');
 		Route::get('/classes/AddClass','DataClassController@AddClass');
-		Route::post('/classes/StoreClass','MajorController@StoreMajor');
-		Route::get('/classes/EditClass/{cls_id}','MajorController@EditMajor');
-		Route::post('/classes/UpdateClass/{cls_id}','MajorController@UpdateMajor');
+		Route::post('/classes/StoreClass','DataClassController@StoreClass');
+		Route::get('/classes/EditClass/{cls_id}','DataClassController@EditClass');
+		Route::post('/classes/UpdateClass/{cls_id}','DataClassController@UpdateClass');
 		
 
 	});

@@ -15,13 +15,13 @@
                <div id="carousel-1" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{asset('assets/images/gallery/mp/logo.jpg')}}" alt="First slide">
+                    <img class="d-block w-100" src="{{asset('assets/images/gallery/mp/mp rpl mm.jpeg')}}" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{asset('assets/images/gallery/mp/rpl.jpg')}}" alt="Second slide">
+                    <img class="d-block w-100" src="{{asset('assets/images/gallery/mp/rpl1.jpeg')}}" alt="Second slide">
                   </div>
                   <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{asset('assets/images/gallery/mp/mm.jpg')}}" alt="Third slide">
+                    <img class="d-block w-100" src="{{asset('assets/images/gallery/mp/mm1.jpeg')}}" alt="Third slide">
                   </div>
                 </div>
               </div>

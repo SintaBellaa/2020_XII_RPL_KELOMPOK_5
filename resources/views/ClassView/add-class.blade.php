@@ -12,29 +12,36 @@
             <form action="/classes/StoreClass" method="post">
               @csrf
 <!-- tingkatan,nama jurusan, ngambil data dari table -->
-           <div class="form-group">
-            <label for="input-1">Tingkatan</label>
-             <select type="text" class="form-control" name="grd_name" required="">
-              <option value="" selected disabled="">Pilih Salah Satu</option>
-              <option value="0">X</option>
-              <option value="1">XI</option>
-              <option value="2">XII</option>
-            </select>
-           </div>
+       <div class="form-group">
+                    <label for="input-3">Tingkatan</label>
+                    <select type="text" class="form-control single-select" name="">
+                      <option value="" selected disabled="">Pilih</option>
+                      @if(!empty($class))
+                      @foreach($class as $data)
+                      <option value="{{ $data->grd_id}}">{{ $data->grd_name}}</option>
+                      @endforeach
+                      @endif
+                    </select>
+              </div>
 
-            <div class="form-group">
-            <label for="input-1">Jurusan</label>
-            <select type="text" class="form-control" name="grd_name" required="">
-              <option value="" selected disabled="">Pilih Salah Satu</option>
-              <option value="0">Rekayasa Perangkat Lunak</option>
-              <option value="1">Multimedia</option>
-            </select>
-           </div>
+                  <div class="form-group">
+                    <label for="input-3">Jurusan</label>
+                    <select type="text" class="form-control single-select" name="">
+                      <option value="" selected disabled="">Pilih</option>
+                      @if(!empty($class))
+                      @foreach($class as $data)
+                      <option value="{{ $data->mjr_id}}">{{ $data->mjr_name}}</option>
+                      @endforeach
+                      @endif
+                    </select>
+              </div>
+
+       
 
            <div class="form-group">
             <label for="input-1">Nomor kelas </label>
            <select type="text" class="form-control" name="cls_number" required="">
-              <option value="" selected disabled="">Pilih Salah Satu</option>
+              <option value="" selected disabled="">Pilih</option>
               <option value="0">1</option>
               <option value="1">2</option>
             </select>

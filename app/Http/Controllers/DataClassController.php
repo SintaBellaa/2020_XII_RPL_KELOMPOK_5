@@ -8,28 +8,53 @@ use App\ClassModel;
 
 class DataClassController extends Controller
 {
+
+   function class()
+    {
+        $class = ClassModel::join('majors', 'class.cls_major_id', '=', 'majors.mjr_id')
+        ->join('grade_levels', 'class.cls_grade_level_id', '=', 'grade_levels.grd_id')
+        ->select(
+            'class.*',
+            'majors.*',
+            'grade_levels.*',
+            'class.cls_id as id_class'
+        )->get();
+
+        return $class;
+
+    }
+
+
    public function index()
     {
-     	$data['class'] = ClassModel::join('majors','cls_major_id','=','majors.mjr_id')
-     	->join('grade_levels','cls_grade_level_id','=','grade_levels.grd_id')
-     	->select('class.*','majors.mjr_name','grade_levels.grd_name') 
-     	->get();
+     
+     	 $class['class'] = $this->class();
 
-     	return view('ClassView.list-class', $data);
+       return view('ClassView.list-class' , $class);
     }
 
     public function AddClass()
     {
+       $data['class'] = $this->class();
    	return view('ClassView.add-class');
 	 }
 
-   public function StoreClass()
+   public function StoreClass(Request $request)
    {
+      $class = new ClassModel;
+      $class->cls_major_id  = $request->mjr_name;
+      $class->cls_grade_level_id = $request->grd_name;
+      $class->cls_number  = $request->cls_number;
+      $class->save();
 
+
+      return redirect('/classes/list-class')->withSuccess('Tambah Data Berhasil');
    }
 
    public function EditClass()
    {
+    $data['class'] = $this->class();
+    return view('ClassView.edit');
     
    }
 	

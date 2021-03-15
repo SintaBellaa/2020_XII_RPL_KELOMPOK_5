@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
-use App\Category;
+use App\OffenseCategory;
 
 class CategoryController extends Controller
 {
      //category
     public function index()
      {
-        $data['category'] = Category::all();
+        $data['offense_category'] = OffenseCategory::all();
         return view ('category.list-category',$data);
      }
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
             'ofc_point'         => 'required|numeric|min:1',
            ]);
 
-           $category = new Category;
+           $category = new OffenseCategory;
            $category->ofc_name   = $request->ofc_name;
            $category->ofc_point  = $request->ofc_point;
            $category->save();
@@ -40,7 +40,7 @@ class CategoryController extends Controller
     public function EditCategory($ofc_id)
 
      {
-        $category = DB::table('offense_categories')->where('ofc_id',$ofc_id)->first();
+        $category = OffenseCategory::where('ofc_id',$ofc_id)->first();
         return view('category.edit-category',['category' => $category]);
      }
 
@@ -52,7 +52,7 @@ class CategoryController extends Controller
             'ofc_point'     => 'required|numeric|min:1',
            ]);
 
-           $category = new Category;
+           $category = new OffenseCategory;
            $category->ofc_name = $request->ofc_name;
 
         return redirect('admin/list-category')->withSuccess('Data Berhasil disimpan');
@@ -60,7 +60,7 @@ class CategoryController extends Controller
  
       public function DestroyCategory($ofc_id)
     {
-      Category::whereOfcId($ofc_id)->delete();
+        OffenseCategory::whereOfcId($ofc_id)->delete();
         return back()->withToastSuccess('Berhasil dihapus');
 
 
