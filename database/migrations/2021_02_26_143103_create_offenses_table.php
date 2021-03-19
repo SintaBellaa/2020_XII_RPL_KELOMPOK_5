@@ -20,7 +20,8 @@ class CreateOffensesTable extends Migration
              $table->foreignId('ofs_offense_category_id');
              $table->foreign('ofs_offense_category_id')->references('ofc_id')->on('offense_categories');
              $table->datetime('ofs_date');
-            $table->timestamps();
+             $table->timestamps();
+             $table->softdeletes();
         });
     }
 

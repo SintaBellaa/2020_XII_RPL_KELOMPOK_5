@@ -34,6 +34,11 @@
                                 <a href="{{URL::to('/admin/edit-offense/'.$data->ofs_id)}}">
                                     <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
                                 </a>
+
+                                 <a href="{{URL::to('/admin/delete/'.$data->ofs_id)}}">
+                                    <i data-toggle="tooltip" data-placement="top" title="delete" aria-hidden="true" class="fa fa-trash fa-lg"></i>
+                                </a>
+
                         </td>
                         
                     </tr>

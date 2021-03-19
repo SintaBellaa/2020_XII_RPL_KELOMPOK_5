@@ -13,6 +13,6 @@ class ClassModel extends Model
     protected  $table = 'class';
     protected $primaryKey = 'cls_id';
     protected $guarded = [''];
-    protected  $dates = ['deleted_at'];
+    protected  $dates = ['cls_deleted_at'];
 
 }

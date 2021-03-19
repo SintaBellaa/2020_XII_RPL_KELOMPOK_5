@@ -11,5 +11,5 @@ class OffenseCategory extends Model
     protected  $table = 'offense_categories';
 	protected $primaryKey = 'ofc_id';
     protected $guarded = [''];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['ofc_deleted_at'];
 }

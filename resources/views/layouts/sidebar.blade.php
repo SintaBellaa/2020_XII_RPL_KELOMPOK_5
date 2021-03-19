@@ -12,7 +12,26 @@
 	 <ul class="sidebar-menu do-nicescrol">
       
        <li>
-        <a href="index.html" class="waves-effect">
+        <a href="" class="waves-effect">
+          <i class="icon-graduation icons"></i> <span>Manage Major</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li><a href="{{URL::to('/major/list-major')}}"><i class="icon-list icons"></i>list Major Data</a></li>
+  
+        </ul>
+      </li>
+
+       <li>
+        <a href="" class="waves-effect">
+          <i class="zmdi zmdi-equalizer"></i> <span>Manage Classes</span> <i class="fa fa-angle-left pull-right"></i>
+        <ul class="sidebar-submenu">
+          <li><a href="{{URL::to('/classes/list-class')}}"><i class="icon-list icons"></i>list Class Data</a></li>
+    
+        </ul>
+      </li>
+
+       <li>
+        <a href="" class="waves-effect">
           <i class="zmdi zmdi-collection-item"></i> <span>Manage Offense Data Category</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="sidebar-submenu">
@@ -22,7 +41,7 @@
       </li>
      
       <li>
-        <a href="index.html" class="waves-effect">
+        <a href="" class="waves-effect">
           <i class="zmdi zmdi-accounts-list"></i> <span>Manage Student</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="sidebar-submenu">
@@ -35,8 +54,8 @@
       </li>
 
        <li>
-        <a href="index.html" class="waves-effect">
-          <i class="icon-home"></i> <span>Manage Offense</span> <i class="fa fa-angle-left pull-right"></i>
+        <a href="" class="waves-effect">
+          <i class="icon-notebook icons"></i> <span>Manage Offense</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="sidebar-submenu">
           <li><a href="{{URL::to('/admin/list-offense')}}"><i class="icon-list icons"></i>list offense data</a></li>
@@ -44,26 +63,7 @@
         </ul>
       </li>
 
-       <li>
-        <a href="index.html" class="waves-effect">
-          <i class="icon-home"></i> <span>Manage Major</span> <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="sidebar-submenu">
-          <li><a href="{{URL::to('/major/list-major')}}"><i class="icon-list icons"></i>list Major Data</a></li>
-    
-        </ul>
-      </li>
-
-       <li>
-        <a href="index.html" class="waves-effect">
-          <i class="icon-home"></i> <span>Manage Classes</span> <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="sidebar-submenu">
-          <li><a href="{{URL::to('/classes/list-class')}}"><i class="icon-list icons"></i>list Class Data</a></li>
-    
-        </ul>
-      </li>
-
+      
 
        <li>
         <a href="{{ route('logout') }}" onclick="event.preventDefault();

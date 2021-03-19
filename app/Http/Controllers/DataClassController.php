@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\ClassModel;
 
 class DataClassController extends Controller
@@ -57,7 +58,22 @@ class DataClassController extends Controller
     return view('ClassView.edit');
     
    }
-	
+
+   public function UpdateClass(Request $request,$cls_id)
+     {
+        DB::table('class')->where('cls_id',$cls_id)->update([
+                'cls_major_id'  => $request->mjr_name     
+        ]);
+        return redirect('class/list-class')->withSuccess('Edit Berhasil');
+     }
+
+
+	 public function DeleteClass($cls_id)
+     {
+        ClassModel::whereClsId($cls_id)->delete();
+        return back()->withToastSuccess('Berhasil dihapus');
+     }
+
   
 
 

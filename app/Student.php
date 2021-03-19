@@ -12,5 +12,5 @@ use SoftDeletes;
     protected  $table = 'students';
     protected $primaryKey = 'stu_id';
     protected $guarded = [''];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['stu_deleted_at'];
 }

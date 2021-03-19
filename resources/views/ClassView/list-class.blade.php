@@ -34,6 +34,11 @@
                                 <a href="{{URL::to('/classes/EditClass/{cls_id}'.$cl->cls_id)}}">
                                     <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
                                 </a>
+
+                                   <a href="{{URL::to('/classes/delete/'.$cl->cls_id)}}">
+                                    <i data-toggle="tooltip" data-placement="top" title="delete" aria-hidden="true" class="fa fa-trash fa-lg"></i>
+                                </a>
+
                             </td> 
                       </tr>
                     @endforeach

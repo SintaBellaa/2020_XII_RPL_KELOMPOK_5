@@ -16,7 +16,7 @@
                  <div class="form-group">
                     <label for="input-3">Name</label>
                     <select type="text" class="form-control single-select" name="userId"  required="">
-                      <option value="" selected disabled="">Pilih siswa</option>
+                      <option selected disabled="">Pilih siswa</option>
                       @if(!empty($student))
                       @foreach($student as $data)
                       <option value="{{ $data->stu_id}}">{{ $data->usr_name}}</option>
@@ -28,7 +28,7 @@
                  <div class="form-group">
                     <label for="input-1" >Pelanggaran</label>
                      <select type="text" class="form-control single-select" name="catId"  required="">
-                         <option value="" selected disabled="">Pilih siswa</option>
+                         <option selected disabled="">Pilih siswa</option>
                          @if(!empty($offense_cat))
                              @foreach($offense_cat as $data)
                                  <option value="{{$data->ofc_id}}">{{$data->ofc_name . '  (Point ' .  $data->ofc_point . ' )'}}</option>

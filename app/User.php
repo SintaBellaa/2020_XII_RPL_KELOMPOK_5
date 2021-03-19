@@ -19,7 +19,7 @@ class User extends Authenticatable
 
     protected $primaryKey = 'usr_id';
     protected $guarded = [];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['usr_deleted_at'];
 
     public function getAuthPassword()
     {

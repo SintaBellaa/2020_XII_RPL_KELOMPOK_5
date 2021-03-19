@@ -80,5 +80,10 @@ class OffenseController extends Controller
         return redirect('/admin/list-offense')->withSuccess('Edit Berhasil');
     }
 
+      public function DeleteOffense($ofs_id)
+     {
+        Offense::whereOfsId($ofs_id)->delete();
+        return back()->withToastSuccess('Berhasil dihapus');
+     }
 }
 
