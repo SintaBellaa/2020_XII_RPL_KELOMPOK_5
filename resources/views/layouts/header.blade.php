@@ -7,26 +7,10 @@
        <i class="icon-menu menu-icon"></i>
      </a>
     </li>
-    <li class="nav-item">
-      <form class="search-bar">
-        <input type="text" class="form-control" placeholder="Enter keywords">
-         <a href="javascript:void();"><i class="icon-magnifier"></i></a>
-      </form>
-    </li>
   </ul>
      
   <ul class="navbar-nav align-items-center right-nav-link">
   
-    
-    <li class="nav-item language">
-      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret waves-effect" data-toggle="dropdown" href="#"><i class="flag-icon flag-icon-gb"></i></a>
-      <ul class="dropdown-menu dropdown-menu-right">
-          <li class="dropdown-item"> <i class="flag-icon flag-icon-gb mr-2"></i> English</li>
-          <li class="dropdown-item"> <i class="flag-icon flag-icon-fr mr-2"></i> French</li>
-          <li class="dropdown-item"> <i class="flag-icon flag-icon-cn mr-2"></i> Chinese</li>
-          <li class="dropdown-item"> <i class="flag-icon flag-icon-de mr-2"></i> German</li>
-        </ul>
-    </li>
     <li class="nav-item">
       <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
         <span class="user-profile"><img src="{{URL::to('assets/images/avatars/avatar-17.png')}}" class="img-circle" alt="user avatar"></span>
@@ -37,18 +21,22 @@
            <div class="media">
              <div class="avatar"><img class="align-self-start mr-3" src="{{URL::to('assets/images/avatars/avatar-17.png')}}" alt="user avatar"></div>
             <div class="media-body">
-            <h6 class="mt-2 user-title">Katrina Mccoy</h6>
-            <p class="user-subtitle">mccoy@example.com</p>
+            <h6 class="mt-2 user-title"> {{ Auth::user()->usr_name }}</h6>
+            <p class="user-subtitle"> {{ Auth::user()->usr_email }}</p>
             </div>
            </div>
           </a>
         </li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-wallet mr-2"></i> Account</li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-settings mr-2"></i> Setting</li>
-        <li class="dropdown-divider"></li>
-        <li class="dropdown-item"><i class="icon-power mr-2"></i> Logout</li>
+
+        <li class="dropdown-item"><i class="icon-power mr-2"></i> 
+
+        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+          document.getElementById('logout-form').submit();" style="color: black;">Logout</a>
+
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+      </li>
       </ul>
     </li>
   </ul>

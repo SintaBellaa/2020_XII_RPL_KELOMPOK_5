@@ -9,7 +9,7 @@
   <div class="card-body">
            <div class="card-title">Form Edit Offense</div>
            <hr>
-           @foreach($offense as $data)
+          @foreach($offense as $data)
             <form action="{{URL::to('admin/UpdateOffense/'.$data->ofs_id)}}" method="post">
               @csrf
 
@@ -18,9 +18,9 @@
                     <select type="text" class="form-control single-select" name="userId"  required="">
                       <option selected disabled="">Pilih siswa</option>
                       @if(!empty($student))
-                      @foreach($student as $data)
-                      <option value="{{ $data->stu_id}}">{{ $data->usr_name}}</option>
-                      @endforeach
+                        @foreach($student as $data)
+                        <option value="{{ $data->stu_id}}">{{ $data->usr_name}}</option>
+                        @endforeach
                       @endif
                     </select>
               </div>
@@ -37,13 +37,10 @@
                      </select>
                  </div>
 
-
-
-
-             @endforeach
-             <div class="form-group">
-              <button type="submit" class="btn btn-primary shadow-primary px-5"><i></i>submit</button>
-            </div>
+          @endforeach
+               <div class="form-group">
+                <button type="submit" class="btn btn-primary shadow-primary px-5"><i></i>submit</button>
+              </div>
           </form>
          </div>
 

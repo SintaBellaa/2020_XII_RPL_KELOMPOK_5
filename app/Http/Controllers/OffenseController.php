@@ -63,7 +63,7 @@ class OffenseController extends Controller
             ->join('users', 'students.stu_user_id', '=', 'users.usr_id')
             ->join('offense_categories', 'offense_categories.ofc_id', '=', 'offenses.ofs_offense_category_id')
             ->get();
-        $data ['student'] = Student::join('users' , 'students.stu_user_id' , '=' , 'users.usr_id')
+        $data ['student'] = Student::join('users' ,'students.stu_user_id' , '=' , 'users.usr_id')
             ->get();
         $data ['offense_cat'] = OffenseCategory::all();
         //return $data ['offense'];
@@ -82,8 +82,17 @@ class OffenseController extends Controller
 
       public function DeleteOffense($ofs_id)
      {
-        Offense::whereOfsId($ofs_id)->delete();
-        return back()->withToastSuccess('Berhasil dihapus');
+        // dd($ofs_id);
+        // $data = Offense::where('ofs_id' , $ofs_id)->first();
+        // dd($data);
+           
+         $data = Offense::whereOfsId($ofs_id)->first();
+         if ($data != NULL) {
+             $data->delete();
+             return back()->withToastSuccess('Berhasil dihapus');
+         }
+         return back()->withToastError('terjadi kesalahan sistem');
+         
      }
 }
 

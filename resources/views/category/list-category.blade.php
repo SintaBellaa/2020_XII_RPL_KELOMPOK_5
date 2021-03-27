@@ -1,55 +1,97 @@
 @extends('layouts.master-admin')
 
+@section('css')
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+@endsection
+
 @section('content')
-<div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header"><i class="fa fa-table"></i>List category data</div>
-        <div class="container" style="margin-left:20px;">
-            <a href="/admin/add-category" class="btn btn-primary">ADD category</a>
-
-        </div>
-`
-        <div class="card-body">
-          <div class="table-responsive">
-
-              <table id="example" class="table table-bordered">
+    
+    <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              <i class="fa fa-table"></i> Data Jurusan
+              
+              <div class="float-right">
+                <a href="admin/add-category" class="btn btn-info">Add Category 
+                  <i _ngcontent-aos-c245="" aria-hidden="true" class="fa fa-plus-circle"></i>
+                </a>
+              </div>
+            </div>
+            <div class="container" style="margin-left:20px;"></div>
+            <div class="table-responsive"></div>
+            <div class="card-body">
+              <table id="data-table" class="table table-striped" style="width:100%">
                 <thead>
-                    <tr>
-                        <th>no</th>
-                        <th>nama pelanggaran</th>
-                        <th>poin</th>
-                        <th>action</th>
-                    </tr>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama pelanggaran</th>
+                    <th>point</th>
+                    <th class="text-center">Action</th>
+                  </tr>
                 </thead>
-                <tbody>
-                       @foreach ($offense_category as $ofc_id => $c)
-                       <tr>
-                           <td>{{ $ofc_id+1 }}</td>
-                           <td>{{ $c->ofc_name }}</td>
-                           <td>{{ $c->ofc_point }}</td>
-
-
-                              <td class="text-center">
-                                <a href="{{URL::to('/admin/edit-category/'.$c->ofc_id)}}">
-                                    <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
-                                </a> &nbsp
-
-                                <a href="{{URL::to('/admin/destroy-category/'.$c->ofc_id)}}" data-toggle="tooltip" data-placement="top" title="Delete">
-                                    <i aria-hidden="true" class="fa fa-trash fa-lg"></i>
-                                </a>
-                                
-                            </td> 
-                        </tr>
-                    @endforeach
-                    
-                </tbody>
-
-            </table>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
-</div>
-</div><!-- End Row-->
+      </div>
+      <!-- End Row-->
+@endsection
 
+@section('js')
+
+
+      <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+      <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+      <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+  
+
+      <script type="text/javascript">
+       $(document).ready(function () {
+          $.ajaxSetup({
+              headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+          });
+
+
+        $('#data-table').dataTable({
+          autoWidth: true,
+          processing: true,
+          serverSide: true,
+          destroy: true,
+          responsive: true,
+          stateSave: true,
+          order: [],
+          ajax: "/admin/list-category",
+          deferRender: true,
+          columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                  },
+                  {
+                    data: 'ofc_name',
+                    name: 'ofc_name'
+                  },
+                  {
+                    data: 'ofc_point',
+                    name: 'ofc_point'
+                  },
+                  {
+                      data: 'action',
+                      name: 'action',
+                      orderable: false,
+                      searchable: false
+                  },
+              ]
+          });
+       });
+
+
+</script>
 @endsection

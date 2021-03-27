@@ -8,12 +8,33 @@ use App\OffenseCategory;
 
 class CategoryController extends Controller
 {
-     //category
-    public function index()
+ 
+  //SEMANGAT SIS 
+    public function index(Request $request)
      {
-        $data['offense_category'] = OffenseCategory::all();
-        return view ('category.list-category',$data);
+        if ($request->ajax()) {
+              $data = OffenseCategory::latest()->get();
+              return Datatable::of($data)
+                      ->addColumn('action', function($data){
+                              return '<a href="'.url('/admin/edit-category/', $data->ofc_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/admin/destroy-category/', $data->ofc_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                      })
+                      ->editColumn('point', function($data){
+                          if ( $data->point == 40 ) {
+                              return '<span _ngcontent-aos-c153="" class="badge badge-warning m-1">SP 1</span>';
+                          } else if ( $data->point == 60 ) {
+                             return '<span _ngcontent-aos-c153="" class="badge badge-warning m-1">SP 2</span>';
+                          }  else if( $data->point == 100 ) {
+                            return '<span _ngcontent-aos-c153="" class="badge badge-danger m-1">SP 3</span>';
+                          }
+                      })
+                      
+                      ->addIndexColumn()
+                      ->rawColumns(['action','point'])
+                      ->make(true);
+         }
+         return view('category.list-category');
      }
+
 
     public function AddCategory()
      {

@@ -24,6 +24,7 @@
        <li>
         <a href="" class="waves-effect">
           <i class="zmdi zmdi-equalizer"></i> <span>Manage Classes</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
         <ul class="sidebar-submenu">
           <li><a href="{{URL::to('/classes/list-class')}}"><i class="icon-list icons"></i>list Class Data</a></li>
     
@@ -65,14 +66,7 @@
 
       
 
-       <li>
-        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-        document.getElementById('logout-form').submit();">Logout</a>
-      </li>
-
-       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-          @csrf
-      </form>
+     
      
 	 
    </div>

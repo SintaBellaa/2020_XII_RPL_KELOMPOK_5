@@ -1,50 +1,83 @@
 @extends('layouts.master-admin')
+
+@section('css')
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css">
+@endsection
+
 @section('content')
- <div class="row">
+    <br>
+      <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-header"><i class="fa fa-table"></i> Data Jurusan</div>
-            <div class="container" style="margin-left:20px;">
-            <a href="/major/AddMajor" class="btn btn-primary">Add Major</a>
-        </div>
-             <div class="table-responsive">
-               
+            <div class="card-header">
+              <i class="fa fa-table"></i> Data Jurusan
+              <div class="float-right">
+                <a href="/major/AddMajor" class="btn btn-info">Add Major <i _ngcontent-aos-c245="" aria-hidden="true" class="fa fa-plus-circle"></i></a>
+              </div>
             </div>
+            <div class="container" style="margin-left:20px;"></div>
+            <div class="table-responsive"></div>
             <div class="card-body">
-             
-
-              <table id="example" class="table table-bordered">
+              <table id="data-table" class="table table-striped" style="width:100%">
                 <thead>
-                    <tr>
-                    <th>no</th>
-                        <th>nama Jurusan</th>
-                        <th class="text-center">action</th>
-                    </tr>
+                  <tr>
+                    <th>No</th>
+                    <th>Nama Jurusan</th> 
+                    <th class="text-center">Action</th>
+                  </tr>
                 </thead>
-                <tbody>
-                        @foreach ($major as $mjr_id => $m)
-                       <tr>
-                           <td>{{ $mjr_id+1 }}</td>
-                           <td>{{ $m->mjr_name }}</td>
-                            <td class="text-center">
-                                <a href="{{URL::to('/major/EditMajor/'.$m->mjr_id)}}">
-                                    <i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i>
-                                </a>
-
-                                  <a href="{{URL::to('/major/delete/'.$m->mjr_id)}}">
-                                    <i data-toggle="tooltip" data-placement="top" title="delete" aria-hidden="true" class="fa fa-trash fa-lg"></i>
-                                </a>
-                                
-                            </td> 
-                      </tr>
-                    @endforeach
-                </tbody>
-               
-            </table>
-            </div>
+                <tbody></tbody>
+              </table>
             </div>
           </div>
         </div>
-      </div><!-- End Row-->
+      </div>
+    <!-- End Row-->
+@endsection
 
+@section('js')
+
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('#data-table').dataTable({
+        autoWidth: true,
+        processing: true,
+        serverSide: true,
+        destroy: true,
+        responsive: true,
+        stateSave: true,
+        order: [],
+        ajax: "/major/list-major",
+        deferRender: true,
+        columns: [{
+                data: 'DT_RowIndex',
+                name: 'DT_RowIndex'
+            },
+            {
+                data: 'mjr_name',
+                name: 'mjr_name'
+            },
+            {
+                data: 'action',
+                name: 'action',
+                orderable: false,
+                searchable: false
+            },
+        ]
+    });
+});
+
+</script>
 @endsection

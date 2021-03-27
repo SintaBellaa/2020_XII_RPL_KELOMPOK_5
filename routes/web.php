@@ -48,9 +48,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::post('admin/store-offense','OffenseController@saveAddOffense');
 		Route::get('admin/edit-offense/{ofs_id}' , 'OffenseController@EditOffense');
 		Route::post('admin/UpdateOffense/{ofs_id}','OffenseController@UpdateOffense');
-		Route::get('/admin/delete/{ofs_id}','OffenseController@DeleteOffense');
+		Route::get('/admin/delete/{id}','OffenseController@DeleteOffense');
 
-		
 		
 		//ini untuk fitur kategori
 		Route::get('admin/list-category' , 'CategoryController@index');

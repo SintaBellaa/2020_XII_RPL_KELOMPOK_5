@@ -70,8 +70,8 @@ class DataClassController extends Controller
 
 	 public function DeleteClass($cls_id)
      {
-        ClassModel::whereClsId($cls_id)->delete();
-        return back()->withToastSuccess('Berhasil dihapus');
+         ClassModel::whereClsId($cls_id)->delete();
+         return back()->withToastSuccess('Berhasil dihapus');
      }
 
   

@@ -9,10 +9,21 @@ use App\Major;
 
 class MajorController extends Controller
 {
-     public function IndexMajor()
+     public function IndexMajor(Request $request)
     {
-        $major = Major::all();
-        return view('major.list-major',['major'=> $major]);
+         if ($request->ajax()) {
+            $data = Major::latest()->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($data){
+                           return '<a href="'.url('major/EditMajor', $data->mjr_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/major/delete/', $data->mjr_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+
+        // https://www.itsolutionstuff.com/post/laravel-58-datatables-tutorialexample.html
+        return view('major.list-major');
     }
 
      public function AddMajor()
