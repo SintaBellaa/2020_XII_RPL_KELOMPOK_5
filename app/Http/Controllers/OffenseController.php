@@ -90,7 +90,8 @@ class OffenseController extends Controller
             'students.*',
             'offenses.*',
             'offenses.ofs_id as id_ofs',
-            'offense_categories.*')
+            'offense_categories.*',
+            'offense_categories.ofc_id as id_ofc')
         ->where('offenses.ofs_id', $ofs_id)->first();
 
         $data ['student'] = Student::join('users' ,'students.stu_user_id' , '=' , 'users.usr_id')
