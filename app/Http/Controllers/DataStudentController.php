@@ -9,6 +9,7 @@ use App\Student;
 use App\Offense;
 use App\User;
 use App\ClassModel;
+use DataTables;
 
 
 class DataStudentController extends Controller
@@ -29,25 +30,38 @@ class DataStudentController extends Controller
 
     }
 
-    public function IndexStudent()
+    public function IndexStudent(Request $request)
     {
+          if ($request->ajax()) {        
+            
+            $data = User::join('students', 'users.usr_id', '=', 'students.stu_user_id')
+            ->join('class', 'students.stu_class_id', '=', 'class.cls_id')
+            ->join('majors', 'class.cls_major_id', '=', 'majors.mjr_id')
+            ->join('grade_levels', 'class.cls_grade_level_id', '=', 'grade_levels.grd_id')
+            ->select(
+                'users.*',
+                'students.*',
+                'class.*',
+                'students.stu_id',
+                'majors.*',
+                'grade_levels.*'
+            )->get();
 
-        $data['student'] = User::join('students', 'users.usr_id', '=', 'students.stu_user_id')
-        ->join('class', 'students.stu_class_id', '=', 'class.cls_id')
-        ->join('majors', 'class.cls_major_id', '=', 'majors.mjr_id')
-        ->join('grade_levels', 'class.cls_grade_level_id', '=', 'grade_levels.grd_id')
-        ->select(
-            'users.*',
-            'students.*',
-            'class.*',
-            'students.stu_id',
-            'majors.*',
-            'grade_levels.*'
-        )->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($data){
+                           return '<a href="'.url('/edit-student', $data->stu_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/student/delete', $data->stu_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                    })
+                     ->editColumn('grd_name', function($data){
+                          return $data->grd_name .'&nbsp;'. $data->mjr_name .'&nbsp;'.  $data->cls_number;
+                      })
+                     
+                    ->rawColumns(['action', 'grd_name'])
+                    ->make(true);
+              }
 
 
-
-        return view('admin-student.list-student', $data);
+        return view('admin-student.list-student');
     }
 
 
