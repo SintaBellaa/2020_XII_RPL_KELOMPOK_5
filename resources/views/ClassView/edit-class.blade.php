@@ -7,28 +7,53 @@
 <body>
   @section('content')
   <div class="card-body">
-           <div class="card-title">Form Edit Kelas</div>
+           <div class="card-title">Form Update Class</div>
            <hr>
-            <form action="{{URL::to('/ClassView/UpdateClass/'.$class->cls_id)}}" method="post">
+            <form action="/classes/UpdateClass/{{ $class->cls_id }}" method="post">
               @csrf
-           <div class="form-group">
-            <label> nama Kelas<span style="color: red"> *</span></label>
-            <input type="text" name="cls_name" class="form-control form-control-rounded @error('cls_name') is-invalid @enderror" placeholder="Masukkan Nama Kelas" value="{{$Class->cls_name}}">
-            @error('cls_name')
-            <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-           </div>
+<!-- tingkatan,nama jurusan, ngambil data dari table -->
+       <div class="form-group">
+                    <label for="input-3">Tingkatan</label>
+                    <select type="text" class="form-control single-select" name="cls_grade_level_id">
+                      <option value="" disabled="">Pilih</option>
+                      @if(!empty($gradeLevels))
+                      @foreach($gradeLevels as $data)
+                      <option value="{{$data->grd_id}}" {{($data->grd_id == $class->cls_grade_level_id ) ? 'selected' : '' }}>{{ $data->grd_name}}</option>
+                      @endforeach
+                      @endif
+                    </select>
+              </div>
+
+                  <div class="form-group">
+                    <label for="input-3">Jurusan</label>
+                    <select type="text" class="form-control single-select" name="cls_major_id">
+                      <option value="" disabled="">Pilih</option>
+                      @if(!empty($major))
+                      @foreach($major as $data)
+                      <option value="{{ $data->mjr_id}}"  {{ ($data->mjr_id == $class->cls_major_id) ? 'selected' : '' }}>{{ $data->mjr_name}}</option>
+                      @endforeach
+                      @endif
+                    </select>
+              </div>
+
+       
 
            <div class="form-group">
+            <label for="input-1">Nomor kelas </label>
+           <select type="text" class="form-control" name="cls_number" required="">
+              <option value="" disabled="">Pilih</option>
+              <option value="1" {{ ( $class->cls_number == 1 ) ? 'selected' : '' }}>1</option>
+              <option value="2" {{ ( $class->cls_number == 2 ) ? 'selected' : '' }}>2</option>
+            </select>
+          </div>
+
+            <div class="form-group">
             <button type="submit" class="btn btn-primary shadow-primary px-5"><i></i>submit</button>
+            <a href="/list-class">
           </div>
           </form>
-         </div>
+        </div>
 
   @endsection
 </body>
 </html>
-
-

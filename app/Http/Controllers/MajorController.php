@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Major;
-
+use DataTables;
 class MajorController extends Controller
 {
      public function IndexMajor(Request $request)
     {
          if ($request->ajax()) {
+            
             $data = Major::latest()->get();
+
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
-                           return '<a href="'.url('major/EditMajor', $data->mjr_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/major/delete/', $data->mjr_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                           return '<a href="'.url('major/EditMajor', $data->mjr_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/major/delete', $data->mjr_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
                     })
                     ->rawColumns(['action'])
                     ->make(true);

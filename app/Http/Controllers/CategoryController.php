@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
 use App\OffenseCategory;
-
+use DataTables;
 class CategoryController extends Controller
 {
  
@@ -14,22 +14,24 @@ class CategoryController extends Controller
      {
         if ($request->ajax()) {
               $data = OffenseCategory::latest()->get();
-              return Datatable::of($data)
+              return Datatables::of($data)
                       ->addColumn('action', function($data){
-                              return '<a href="'.url('/admin/edit-category/', $data->ofc_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/admin/destroy-category/', $data->ofc_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                              return '<a href="'.url('edit-category', $data->ofc_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('destroy-category', $data->ofc_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
                       })
-                      ->editColumn('point', function($data){
-                          if ( $data->point == 40 ) {
-                              return '<span _ngcontent-aos-c153="" class="badge badge-warning m-1">SP 1</span>';
-                          } else if ( $data->point == 60 ) {
-                             return '<span _ngcontent-aos-c153="" class="badge badge-warning m-1">SP 2</span>';
-                          }  else if( $data->point == 100 ) {
-                            return '<span _ngcontent-aos-c153="" class="badge badge-danger m-1">SP 3</span>';
+                      ->editColumn('ofc_point', function($data){
+                          if ( $data->ofc_point >= 40 && $data->ofc_point < 60) {
+                              return '<span _ngcontent-aos-c153="" class="badge badge-warning m-1">'.$data->ofc_point.' SP 1</span>';
+                          } else if ( $data->ofc_point >= 60 && $data->ofc_point < 100 ) {
+                             return '<span _ngcontent-aos-c153="" class="badge badge-warning m-1">'.$data->ofc_point.' SP 2</span>';
+                          }  else if( $data->ofc_point == 100 ) {
+                            return '<span _ngcontent-aos-c153="" class="badge badge-danger m-1">'.$data->ofc_point.' SP 3</span>';
+                          } else if( $data->ofc_point >= 1 && $data->ofc_point < 40) {
+                              return '<span _ngcontent-aos-c153="" class="badge badge-success m-1">'.$data->ofc_point.' Pelanggaran Ringan</span>';
                           }
                       })
                       
                       ->addIndexColumn()
-                      ->rawColumns(['action','point'])
+                      ->rawColumns(['action','ofc_point'])
                       ->make(true);
          }
          return view('category.list-category');

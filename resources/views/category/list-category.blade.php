@@ -13,10 +13,10 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-header">
-              <i class="fa fa-table"></i> Data Jurusan
+              <i class="fa fa-table"></i> Data Kategori
               
               <div class="float-right">
-                <a href="admin/add-category" class="btn btn-info">Add Category 
+                <a href="add-category" class="btn btn-info">Add Category 
                   <i _ngcontent-aos-c245="" aria-hidden="true" class="fa fa-plus-circle"></i>
                 </a>
               </div>

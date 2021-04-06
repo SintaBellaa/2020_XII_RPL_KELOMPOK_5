@@ -190,7 +190,7 @@ class Toaster
      * @param string $imageAlt
      * @author Rashid Ali <realrashid05@gmail.com>
      */
-    public function image($title = '', $text = '')
+    public function image($title, $text,$imageUrl, $imageWidth, $imageHeight, $imageAlt)
     {
         $this->config['title'] = $title;
         $this->config['text'] = $text;

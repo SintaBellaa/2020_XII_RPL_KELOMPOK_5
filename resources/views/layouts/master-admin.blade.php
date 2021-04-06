@@ -5,6 +5,9 @@
 
   @yield('css')
 <body>
+  <!-- Start wrapper-->
+ <div id="wrapper">
+ 
 	@include('layouts.sidebar')
 
 	@include('layouts.header')
