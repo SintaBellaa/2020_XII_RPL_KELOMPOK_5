@@ -9,8 +9,7 @@
   <div class="card-body">
            <div class="card-title">Form Edit Offense</div>
            <hr>
-          @foreach($offense as $data)
-            <form action="{{URL::to('admin/UpdateOffense/'.$data->ofs_id)}}" method="post">
+            <form action="{{URL::to('admin/UpdateOffense/'.$offense->ofs_id)}}" method="post">
               @csrf
 
                  <div class="form-group">
@@ -30,14 +29,13 @@
                      <select type="text" class="form-control single-select" name="catId"  required="">
                          <option selected disabled="">Pilih siswa</option>
                          @if(!empty($offense_cat))
-                             @foreach($offense_cat as $data)
-                                 <option value="{{$data->ofc_id}}">{{$data->ofc_name . '  (Point ' .  $data->ofc_point . ' )'}}</option>
+                             @foreach($offense_cat as $item)
+                                 <option value="{{$item->ofc_id}}">{{$item->ofc_name . '  (Point ' .  $item->ofc_point . ' )'}}</option>
                              @endforeach
                          @endif
                      </select>
                  </div>
 
-          @endforeach
                <div class="form-group">
                 <button type="submit" class="btn btn-primary shadow-primary px-5"><i></i>submit</button>
               </div>

@@ -9,15 +9,16 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Offense;
 use App\Student;
 use App\Category;
-
+use DataTables;
 use App\User;
-
+use Carbon\Carbon;
 class OffenseController extends Controller
 {
     //offense
-    public function ListOffense()
+    public function ListOffense(Request $request)
     {
-        $data['offense'] = User::role('student')->join('students', 'users.usr_id', 'students.stu_user_id')
+      if ($request->ajax()) {
+          $data = User::role('student')->join('students', 'users.usr_id', 'students.stu_user_id')
             ->join('offenses', 'students.stu_id', '=', 'offenses.ofs_student_id')
             ->join('offense_categories', 'offenses.ofs_offense_category_id', '=', 'offense_categories.ofc_id')
             ->select('users.*',
@@ -25,7 +26,32 @@ class OffenseController extends Controller
                 'offenses.*',
                 'offenses.ofs_id as id_ofs',
                 'offense_categories.*')->get();
-        return view('offense.list-offense', $data);
+
+          return Datatables::of($data)
+                  ->addColumn('action', function($data){
+                          return '<a href="'.url('admin/edit-offense', $data->id_ofs).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('admin/delete', $data->id_ofs).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                  })
+                  ->editColumn('ofc_point', function($data){
+                      if ( $data->ofc_point >= 40 && $data->ofc_point < 60) {
+                          return '<span _ngcontent-aos-c153="" class="badge badge-warning m-1">'.$data->ofc_point.' SP 1</span>';
+                      } else if ( $data->ofc_point >= 60 && $data->ofc_point < 100 ) {
+                         return '<span _ngcontent-aos-c153="" class="badge badge-warning m-1">'.$data->ofc_point.' SP 2</span>';
+                      }  else if( $data->ofc_point == 100 ) {
+                        return '<span _ngcontent-aos-c153="" class="badge badge-danger m-1">'.$data->ofc_point.' SP 3</span>';
+                      } else if( $data->ofc_point >= 1 && $data->ofc_point < 40) {
+                          return '<span _ngcontent-aos-c153="" class="badge badge-success m-1">'.$data->ofc_point.' Pelanggaran Ringan</span>';
+                      }
+                  })
+                  ->editColumn('ofs_date', function($data){
+                        return Carbon::parse($data->ofs_date)->translatedFormat('l, d F Y');
+                  })
+                  
+                  ->addIndexColumn()
+                  ->rawColumns(['action','ofc_point', 'ofs_date'])
+                  ->make(true);
+     }
+  
+        return view('offense.list-offense');
     }
 
     //baru sampe ubah
@@ -57,12 +83,16 @@ class OffenseController extends Controller
 
     public function EditOffense($ofs_id)
     {
+        $data ['offense'] = User::role('student')->join('students', 'users.usr_id', 'students.stu_user_id')
+        ->join('offenses', 'students.stu_id', '=', 'offenses.ofs_student_id')
+        ->join('offense_categories', 'offenses.ofs_offense_category_id', '=', 'offense_categories.ofc_id')
+        ->select('users.*',
+            'students.*',
+            'offenses.*',
+            'offenses.ofs_id as id_ofs',
+            'offense_categories.*')
+        ->where('offenses.ofs_id', $ofs_id)->first();
 
-        $data ['offense'] = offense::where('offenses.ofs_id', $ofs_id)
-            ->join('students', 'students.stu_id', '=', 'offenses.ofs_student_id')
-            ->join('users', 'students.stu_user_id', '=', 'users.usr_id')
-            ->join('offense_categories', 'offense_categories.ofc_id', '=', 'offenses.ofs_offense_category_id')
-            ->get();
         $data ['student'] = Student::join('users' ,'students.stu_user_id' , '=' , 'users.usr_id')
             ->get();
         $data ['offense_cat'] = OffenseCategory::all();
