@@ -9,8 +9,18 @@ use App\Major;
 use DataTables;
 class MajorController extends Controller
 {
+
+     private function major()
+    {
+      $major = Major::latest()->get();
+  
+      return $major;
+    }
+
+
      public function IndexMajor(Request $request)
     {
+       
          if ($request->ajax()) {
             
             $data = Major::latest()->get();

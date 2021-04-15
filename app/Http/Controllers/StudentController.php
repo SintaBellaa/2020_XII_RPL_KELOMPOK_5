@@ -15,6 +15,11 @@ class StudentController extends Controller
     {
         return view('student.list');
     }
+
+    public function info()
+    {
+    	return view('student.category-list');
+    }
     
 }
 

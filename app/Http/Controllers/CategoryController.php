@@ -9,7 +9,7 @@ use DataTables;
 class CategoryController extends Controller
 {
  
-  //SEMANGAT SIS 
+ 
     public function index(Request $request)
      {
         if ($request->ajax()) {
