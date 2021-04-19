@@ -27,7 +27,7 @@ class DataClassController extends Controller
       return $major;
     }
 
-   private function class()
+   public function class()
     
     {
         $class = ClassModel::join('majors', 'class.cls_major_id', '=', 'majors.mjr_id')
@@ -38,14 +38,16 @@ class DataClassController extends Controller
             'grade_levels.*',
             'class.cls_id as id_class'
         )
-        ->groupBy('grade_levels.grd_name')->get();
-    
+        ->get();
+
+      
         return $class;
 
     }
 
    public function index(Request $request)
     {
+
        if ($request->ajax()) {
             
             $data = $this->class();

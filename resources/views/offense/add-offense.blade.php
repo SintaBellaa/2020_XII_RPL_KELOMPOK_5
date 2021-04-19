@@ -9,8 +9,10 @@
 	<div class="card-body">
 				   <div class="card-title">Form Add Offense</div>
 				   <hr>
-				    <form method="post">
+				    <form action="/admin/store-offense"  method="post">
               @csrf
+
+
 					   <div class="form-group">
                     <label for="input-3">Name</label>
                     <select type="text" class="form-control single-select" name="nama_siswa_id"  required="">
@@ -25,7 +27,7 @@
 
 
 
-                    <div class="form-group">
+                 <div class="form-group">
                     <label for="input-3">Pelanggaran</label>
                     <select type="text" class="form-control single-select" name="offense_category_id"  required="">
                       <option value="" selected disabled="">Pilih Pelanggaran</option>
@@ -35,7 +37,7 @@
                       @endforeach
                       @endif
                     </select>
-                   </div>
+             </div>
 
 
 

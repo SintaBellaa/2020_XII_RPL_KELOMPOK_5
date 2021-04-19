@@ -28,7 +28,7 @@
                      <br><br>
                      nama : {{ Auth()->user() -> usr_name }} 
                      <br><br>
-                     Example Tampilan Untuk Siswa
+                   
                 </div>
             </div>
           

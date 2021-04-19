@@ -13,8 +13,16 @@
       <li class="sidebar-header">SMKS MAHAPUTRA CERDAS UTAMA</li>
      
       <li>
+        <a href="{{URL::to('')}}" class="waves-effect">
+          <i class="icon-calendar"></i> <span>Daftar Pelanggaran</span> 
+        </a>
+      </li>
+
+
+
+      <li>
         <a href="{{URL::to('/student/list-student')}}" class="waves-effect">
-          <i class="icon-calendar"></i> <span>list</span> 
+          <i class="icon-calendar"></i> <span>info</span> 
         </a>
       </li>
 

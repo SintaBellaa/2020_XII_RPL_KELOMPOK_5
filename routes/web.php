@@ -45,7 +45,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 		//ini untuk fitur pelanggaran{offenses}
 		Route::get('admin/list-offense','OffenseController@ListOffense');
 		Route::get('admin/add-offense','OffenseController@AddOffense');
-		Route::post('admin/store-offense','OffenseController@saveAddOffense');
+		Route::post('/admin/store-offense','OffenseController@saveAddOffense');
 		Route::get('admin/edit-offense/{ofs_id}' , 'OffenseController@EditOffense');
 		Route::post('admin/UpdateOffense/{ofs_id}','OffenseController@UpdateOffense');
 		Route::get('/admin/delete/{id}','OffenseController@DeleteOffense');
@@ -85,7 +85,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::get('/classes/EditClass/{cls_id}','DataClassController@EditClass');
 		Route::post('/classes/UpdateClass/{cls_id}','DataClassController@UpdateClass');
 		Route::get('/classes/delete/{cls_id}','DataclassController@DeleteClass');
-
+		Route::get('/classes/apaweh','DataclassController@class');
 		
 
 	});

@@ -30,7 +30,7 @@
                          <option  disabled="">Pilih Pelanggaran</option>
                          @if(!empty($offense_cat))
                              @foreach($offense_cat as $item)
-                                 <option value="{{$item->ofc_id}}" {{ ($data->ofc_id == $offense->id_ofc) ? 'selected' : '' }}>{{$item->ofc_name . '  (Point ' .  $item->ofc_point . ' )'}}</option>
+                                 <option value="{{$item->ofc_id}}" {{ ($item->ofc_id == $offense->ofc_id) ? 'selected' : '' }}>{{$item->ofc_name . '  (Point ' .  $item->ofc_point . ' )'}}</option>
                              @endforeach
                          @endif
                      </select>

@@ -50,7 +50,7 @@ class DataStudentController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($data){
-                           return '<a href="'.url('/edit-student', $data->stu_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/student/delete', $data->stu_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                           return '<a href="'.url('/admin/edit-student', $data->stu_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/admin/student/delete', $data->stu_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
                     })
                      ->editColumn('grd_name', function($data){
                           return $data->grd_name .'&nbsp;'. $data->mjr_name .'&nbsp;'.  $data->cls_number;
@@ -86,6 +86,7 @@ class DataStudentController extends Controller
         $user->usr_email_verified_at = now();
         $user->usr_created_by        = Auth()->user()->usr_id;
         $user->save();
+        $user->assignRole('student');
 
         if ($user) {
             $student                = new Student;
@@ -95,6 +96,7 @@ class DataStudentController extends Controller
             $student->stu_gender    = $request->stu_gender;
             $student->stu_address   = $request->stu_address;
             $student->save();
+
 
             return redirect('/admin/list-student')->withSuccess('Tambah Data Berhasil');
          } else {

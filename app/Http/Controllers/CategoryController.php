@@ -16,7 +16,7 @@ class CategoryController extends Controller
               $data = OffenseCategory::latest()->get();
               return Datatables::of($data)
                       ->addColumn('action', function($data){
-                              return '<a href="'.url('edit-category', $data->ofc_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('destroy-category', $data->ofc_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                              return '<a href="'.url('/admin/edit-category', $data->ofc_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/admin/destroy-category', $data->ofc_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
                       })
                       ->editColumn('ofc_point', function($data){
                           if ( $data->ofc_point >= 40 && $data->ofc_point < 60) {
@@ -46,6 +46,7 @@ class CategoryController extends Controller
     
     public function StoreCategory(Request $request)
      {
+
            $this->validate($request,[
             'ofc_name'  => 'required|unique:offense_categories,ofc_name',
             'ofc_point'         => 'required|numeric|min:1',
@@ -71,12 +72,14 @@ class CategoryController extends Controller
      {
        
          $this->validate($request,[
-            'ofc_name'       => 'required|unique:offense_categories,ofc_name',
+            'ofc_name'       => 'required|unique:offense_categories,ofc_name,'.$id.',ofc_id,deleted_at,NULL',
             'ofc_point'     => 'required|numeric|min:1',
            ]);
 
            $category = new OffenseCategory;
            $category->ofc_name = $request->ofc_name;
+           $category->ofc_point  = $request->ofc_point;
+           $category->save();
 
         return redirect('admin/list-category')->withSuccess('Data Berhasil disimpan');
      }
@@ -84,7 +87,7 @@ class CategoryController extends Controller
       public function DestroyCategory($ofc_id)
     {
         OffenseCategory::whereOfcId($ofc_id)->delete();
-        return back()->withToastSuccess('Berhasil dihapus');
+        return redirect('admin/list-category')->withToastSuccess('Berhasil dihapus');
 
 
     }

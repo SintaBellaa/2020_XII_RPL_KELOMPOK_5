@@ -54,13 +54,14 @@ class OffenseController extends Controller
         return view('offense.list-offense');
     }
 
-    //baru sampe ubah
+  
     public function AddOffense()
     {
         $data['student'] = User::role('student')->join('students', 'users.usr_id', 'students.stu_user_id')
             ->get();
 
         $data['offense_category'] = OffenseCategory::all();
+
         return view('offense.add-offense', $data);
 
     }
@@ -83,6 +84,7 @@ class OffenseController extends Controller
 
     public function EditOffense($ofs_id)
     {
+
         $data ['offense'] = User::role('student')->join('students', 'users.usr_id', 'students.stu_user_id')
         ->join('offenses', 'students.stu_id', '=', 'offenses.ofs_student_id')
         ->join('offense_categories', 'offenses.ofs_offense_category_id', '=', 'offense_categories.ofc_id')
@@ -98,16 +100,19 @@ class OffenseController extends Controller
             ->get();
         $data ['offense_cat'] = OffenseCategory::all();
         //return $data ['offense'];
+        
+
         return view('offense.edit-offense', $data);
     }
 
     public function UpdateOffense(Request $request, $ofs_id)
-    {
+    { 
         //return ($request);
         $data = Offense::whereOfsId($ofs_id)->first();
-        $data->ofs_student_id = $request->input('userId');
-        $data->ofs_offense_category_id = $request->input('catId');
+        $data->ofs_student_id = $request->userId;
+        $data->ofs_offense_category_id = $request->catId;
         $data->save();
+
         return redirect('/admin/list-offense')->withSuccess('Edit Berhasil');
     }
 
@@ -122,7 +127,7 @@ class OffenseController extends Controller
              $data->delete();
              return back()->withToastSuccess('Berhasil dihapus');
          }
-         return back()->withToastError('terjadi kesalahan sistem');
+         return redirect('/admin/list-offense')->withToastError('terjadi kesalahan sistem');
          
      }
 }
