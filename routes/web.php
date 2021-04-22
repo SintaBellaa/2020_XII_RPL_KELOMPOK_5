@@ -68,6 +68,12 @@ Route::group(['middleware' => ['role:admin']], function () {
 		Route::post('admin/UpdateStudent/{stu_id}' , 'DataStudentController@UpdateStudent');
 		Route::get('/admin/student/delete/{stu_id}' , 'DataStudentController@DeleteStudent');
 
+		Route::get('/admin/penalty', 'PenaltyController@index');
+		Route::get('/admin/create', 'PenaltyController@create');
+		Route::post('/admin/create', 'PenaltyController@store');
+		Route::post('/admin/update/{id}', 'PenaltyController@update');
+		Route::get('/admin/edit/{id}', 'PenaltyController@edit');
+		
 
 		//route web untuk kelola major
 		Route::get('/major/list-major','MajorController@IndexMajor');
@@ -94,6 +100,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 Route::group(['middleware' => ['role:student']], function () {
 		Route::get('/student/dashboard','StudentController@index');
 		Route::get('/student/list-student','StudentController@list');
+		Route::get('/student/info-category','StudentController@info');
+
 	});
 
 

@@ -13,6 +13,7 @@ use App\GradeLevel;
 class DataClassController extends Controller
 {
 
+
   private function gradeLevels()
   {
     $grade = GradeLevel::latest()->get();
@@ -48,14 +49,16 @@ class DataClassController extends Controller
    public function index(Request $request)
     {
 
+      $base = $this->base64();
+
        if ($request->ajax()) {
             
             $data = $this->class();
 
             return Datatables::of($data)
                     ->addIndexColumn()
-                    ->addColumn('action', function($data){
-                           return '<a href="'.url('/classes/EditClass', $data->cls_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/classes/delete', $data->cls_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                    ->addColumn('action', function($data) use ($base) {
+                           return '<a href="'.url('/classes/EditClass',$base->encrypt($data->cls_id)).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/classes/delete', $base->encrypt($data->cls_id)).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
                     })
                     ->rawColumns(['action'])
                     ->make(true);
@@ -97,23 +100,34 @@ class DataClassController extends Controller
 
    public function EditClass($class_id)
    {
+
+       $base = $this->base64();
+
        $data['major']       = $this->major();
        $data['gradeLevels'] = $this->gradeLevels();
 
-       $data['class'] = ClassModel::whereClsId($class_id)->first();
-      return view('ClassView.edit-class', $data);
-    
+
+       $data['class'] = ClassModel::whereClsId($base->decrypt($class_id))->first();
+
+
+        if ($data['class']) {       
+            return view('ClassView.edit-class', $data);
+  
+        } else {
+          abort(403);
+        }
+
    }
 
    public function UpdateClass(Request $request, $cls_id)
      { 
-
+        $base = $this->base64();
       $count = ClassModel::where('cls_major_id', $request->cls_major_id)
       ->where('cls_grade_level_id', $request->cls_grade_level_id)->count();
 
       if ($count == 0 ) {
 
-        $class = ClassModel::whereClsId($cls_id)->first();
+        $class = ClassModel::whereClsId($base->decrypt($class_id))->first();
         $class->cls_major_id           = $request->cls_major_id;
         $class->cls_grade_level_id     = $request->cls_grade_level_id;
         $class->cls_number             = $request->cls_number;
@@ -130,7 +144,9 @@ class DataClassController extends Controller
 
 	 public function DeleteClass($cls_id)
      {
-        $delete =  ClassModel::whereClsId($cls_id)->delete();
+       $base = $this->base64();
+
+        $delete =  ClassModel::whereClsId($base->decrypt($class_id))->delete();
 
         if ($delete) {
           return back()->withToastSuccess('Berhasil dihapus');
@@ -139,18 +155,5 @@ class DataClassController extends Controller
         }
      
       }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-   }
+  }
 

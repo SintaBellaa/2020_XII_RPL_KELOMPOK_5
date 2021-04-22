@@ -18,7 +18,7 @@ class StudentController extends Controller
 
     public function info()
     {
-    	return view('student.category-list');
+    	return view('student.info-category');
     }
     
 }

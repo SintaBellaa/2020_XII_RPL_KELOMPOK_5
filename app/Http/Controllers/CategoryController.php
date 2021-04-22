@@ -12,11 +12,13 @@ class CategoryController extends Controller
  
     public function index(Request $request)
      {
+
+      $base = $this->base64();
         if ($request->ajax()) {
               $data = OffenseCategory::latest()->get();
               return Datatables::of($data)
-                      ->addColumn('action', function($data){
-                              return '<a href="'.url('/admin/edit-category', $data->ofc_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/admin/destroy-category', $data->ofc_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                      ->addColumn('action', function($data) use ($base){
+                              return '<a href="'.url('/admin/edit-category', $base->encrypt($data->ofc_id)).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/admin/destroy-category', $base->encrypt($data->ofc_id)).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
                       })
                       ->editColumn('ofc_point', function($data){
                           if ( $data->ofc_point >= 40 && $data->ofc_point < 60) {
@@ -64,19 +66,27 @@ class CategoryController extends Controller
     public function EditCategory($ofc_id)
 
      {
-        $category = OffenseCategory::where('ofc_id',$ofc_id)->first();
-        return view('category.edit-category',['category' => $category]);
+       $base = $this->base64();
+
+        $category = OffenseCategory::where('ofc_id', $base->decrypt($ofc_id))->first();
+
+        if ($category) {       
+          return view('category.edit-category',['category' => $category]);
+        } else {
+          abort(403);
+        }
      }
 
      public function UpdateCategory(Request $request,$id)
      {
+       $base = $this->base64();
        
          $this->validate($request,[
             'ofc_name'       => 'required|unique:offense_categories,ofc_name,'.$id.',ofc_id,deleted_at,NULL',
             'ofc_point'     => 'required|numeric|min:1',
            ]);
 
-           $category = new OffenseCategory;
+           $category = OffenseCategory::where('ofc_id', $base->decrypt($ofc_id))->first();
            $category->ofc_name = $request->ofc_name;
            $category->ofc_point  = $request->ofc_point;
            $category->save();
@@ -86,7 +96,9 @@ class CategoryController extends Controller
  
       public function DestroyCategory($ofc_id)
     {
-        OffenseCategory::whereOfcId($ofc_id)->delete();
+      
+       $base = $this->base64();
+        OffenseCategory::whereOfcId($base->decrypt($ofc_id))->delete();
         return redirect('admin/list-category')->withToastSuccess('Berhasil dihapus');
 
 

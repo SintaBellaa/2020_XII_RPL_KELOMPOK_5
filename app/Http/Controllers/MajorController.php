@@ -20,15 +20,15 @@ class MajorController extends Controller
 
      public function IndexMajor(Request $request)
     {
+          $base = $this->base64();
        
          if ($request->ajax()) {
             
             $data = Major::latest()->get();
-
             return Datatables::of($data)
                     ->addIndexColumn()
-                    ->addColumn('action', function($data){
-                           return '<a href="'.url('major/EditMajor', $data->mjr_id).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/major/delete', $data->mjr_id).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
+                    ->addColumn('action', function($data) use ($base){
+                           return '<a href="'.url('major/EditMajor', $base->encrypt($data->mjr_id)).'" class="btn btn-primary waves-effect waves-light m-1"><i data-toggle="tooltip" data-placement="top" title="Edit" aria-hidden="true" class="fa fa-edit fa-lg"></i></a>' . '&nbsp' . '<a href="'.url('/major/delete',  $base->encrypt($data->mjr_id)).'" class="btn btn-danger waves-effect waves-light m-1"> <i aria-hidden="true" class="fa fa-trash fa-lg"></i></a>';
                     })
                     ->rawColumns(['action'])
                     ->make(true);
@@ -54,13 +54,21 @@ class MajorController extends Controller
 
      public function EditMajor($mjr_id)
     {
-        $major = DB::table('majors')->where('mjr_id',$mjr_id)->first();
-        return view('major.edit-major',['major' => $major]);
-     }
+          $base = $this->base64();
+        $major = DB::table('majors')->where('mjr_id', $base->decrypt($mjr_id))->first();
+      
+
+      if ($major) {       
+          return view('major.edit-major',['major' => $major]);
+        } else {
+          abort(403);
+        }
+    }
 
      public function UpdateMajor(Request $request,$mjr_id)
      {
-        DB::table('majors')->where('mjr_id',$mjr_id)->update([
+         $base = $this->base64();
+        DB::table('majors')->where('mjr_id', $base->decrypt($mjr_id))->update([
                 'mjr_name'  => $request->mjr_name     
         ]);
         return redirect('major/list-major')->withSuccess('Edit Berhasil');
@@ -68,8 +76,15 @@ class MajorController extends Controller
 
      public function DeleteMajor($mjr_id)
      {
-        Major::whereMjrId($mjr_id)->delete();
-        return back()->withToastSuccess('Berhasil dihapus');
+         $base = $this->base64();
+       $delete =  Major::where('mjr_id', $base->decrypt($mjr_id))->delete();
+         
+         if ($delete) {
+            return back()->withToastSuccess('Berhasil dihapus');
+         } else {
+            return back()->withToastWarning('Gagal Dihapus');
+         }
+        
      }
 
 }

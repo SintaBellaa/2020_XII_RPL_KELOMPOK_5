@@ -57,6 +57,16 @@
         </ul>
       </li>
       
+      <li>
+        <a href="javaScript:void();" class="waves-effect">
+          <i class="icon-notebook icons"></i> <span>Penalty</span>
+          <i class="fa fa-angle-left float-right"></i>
+        </a>
+        <ul class="sidebar-submenu">
+        <li class="{{ request()->is('/admin/penalty') ? 'active' : '' }}"><a href="{{URL::to('/admin/penalty')}}"><i class="icon-list icons"></i>List Penalty</a></li>
+        </ul>
+      </li>
+      
       
    
     </ul>
